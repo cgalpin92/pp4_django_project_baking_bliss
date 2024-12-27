@@ -1,0 +1,1 @@
+web: gunicorn baking_bliss.wsgi
