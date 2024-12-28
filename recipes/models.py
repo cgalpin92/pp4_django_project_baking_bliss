@@ -32,3 +32,7 @@ class Ingredient(models.Model):
     ingredient_name = models.ForeignKey(IngredientName, on_delete=models.CASCADE, related_name="ingredient_name")
     measurement = models.IntegerField(default=0)
     unit = models.CharField(max_length=20, choices=UNIT_CHOICES, default=GRAM)
+
+
+class Category(models.Model):
+    category_name = models.CharField(max_length=20, unique=True)
