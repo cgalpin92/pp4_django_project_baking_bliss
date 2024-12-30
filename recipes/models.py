@@ -53,6 +53,9 @@ class Ingredient(models.Model):
 class Category(models.Model):
     category_name = models.CharField(max_length=20, unique=True)
 
+    def __str__(self):
+        return f"{self.category_name}"
+
 
 class Recipe(models.Model):
     EASY = "Easy"
@@ -74,3 +77,6 @@ class Recipe(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     updated_on = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.recipe_name}"
