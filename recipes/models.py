@@ -9,6 +9,9 @@ class IngredientName(models.Model):
     author = models.ForeignKey(User, on_delete=models.PROTECT, related_name="ingredient_author")
     approved = models.BooleanField(default=False)
 
+    def __str__(self):
+        return f"{self.name}"
+
 
 class Ingredient(models.Model):
     TEASPOON = "tsp"
