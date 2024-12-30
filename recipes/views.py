@@ -8,4 +8,5 @@ from .models import IngredientName, Ingredient, Category, Recipe
 #     return HttpResponse("The recipe page works!")
 
 class CategoryList(generic.ListView):
-    model = Category
+    queryset = Category.objects.all()
+    template_name = "category_list.html"
