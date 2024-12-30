@@ -18,8 +18,8 @@ class Ingredient(models.Model):
     TABLESPOON = "tbsp"
     FLUID_OUNCE = "fl oz"
     CUP = "cup"
-    GRAM = "g"
-    KILOGRAM = "kg"
+    GRAMS = "g"
+    KILOGRAMS = "kg"
     LITER = "l"
     MILLILITER = "ml"
     CENTIMETER = "cm"
@@ -28,15 +28,15 @@ class Ingredient(models.Model):
         (TABLESPOON, "tablespoon"),
         (FLUID_OUNCE, "fluid ounce"),
         (CUP, "cup"),
-        (GRAM, "gram"),
-        (KILOGRAM, "kilogram"),
+        (GRAMS, "grams"),
+        (KILOGRAMS, "kilograms"),
         (LITER, "liter"),
         (MILLILITER, "milliter"),
         (CENTIMETER, "centimeter"),
     ]
     ingredient_name = models.ForeignKey(IngredientName, on_delete=models.CASCADE, related_name="ingredient_name")
     measurement = models.IntegerField(default=0)
-    unit = models.CharField(max_length=20, choices=UNIT_CHOICES, default=GRAM)
+    unit = models.CharField(max_length=20, choices=UNIT_CHOICES, default=GRAMS)
 
 
 class Category(models.Model):
