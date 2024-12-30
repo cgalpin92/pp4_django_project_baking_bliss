@@ -15,14 +15,17 @@ class IngredientName(models.Model):
 
 class Ingredient(models.Model):
     TEASPOON = "tsp"
+    TEASPOONS = "tsps"
     TABLESPOON = "tbsp"
+    TABLESPOOONS = "tbsps"
     FLUID_OUNCE = "fl oz"
     CUP = "cup"
+    CUPS = "cups"
     GRAMS = "g"
     KILOGRAMS = "kg"
-    LITER = "l"
-    MILLILITER = "ml"
-    CENTIMETER = "cm"
+    LITERS = "l"
+    MILLILITERS = "ml"
+    CENTIMETERS = "cm"
     UNIT_CHOICES = [
         (TEASPOON, "teaspoon"),
         (TABLESPOON, "tablespoon"),
@@ -30,9 +33,9 @@ class Ingredient(models.Model):
         (CUP, "cup"),
         (GRAMS, "grams"),
         (KILOGRAMS, "kilograms"),
-        (LITER, "liter"),
-        (MILLILITER, "milliter"),
-        (CENTIMETER, "centimeter"),
+        (LITERS, "liters"),
+        (MILLILITERS, "milliters"),
+        (CENTIMETERS, "centimeters"),
     ]
     ingredient_name = models.ForeignKey(IngredientName, on_delete=models.CASCADE, related_name="ingredient_name")
     measurement = models.IntegerField(default=0)
