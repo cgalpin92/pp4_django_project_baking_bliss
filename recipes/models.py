@@ -17,7 +17,7 @@ class Ingredient(models.Model):
     TEASPOON = "tsp"
     TEASPOONS = "tsps"
     TABLESPOON = "tbsp"
-    TABLESPOOONS = "tbsps"
+    TABLESPOONS = "tbsps"
     FLUID_OUNCE = "fl oz"
     CUP = "cup"
     CUPS = "cups"
@@ -26,20 +26,28 @@ class Ingredient(models.Model):
     LITERS = "l"
     MILLILITERS = "ml"
     CENTIMETERS = "cm"
+    BLANK = " "
     UNIT_CHOICES = [
         (TEASPOON, "teaspoon"),
+        (TEASPOONS, "teaspoons"),
         (TABLESPOON, "tablespoon"),
+        (TABLESPOONS, "tablespoons"),
         (FLUID_OUNCE, "fluid ounce"),
         (CUP, "cup"),
+        (CUPS, "cups"),
         (GRAMS, "grams"),
         (KILOGRAMS, "kilograms"),
         (LITERS, "liters"),
         (MILLILITERS, "milliters"),
         (CENTIMETERS, "centimeters"),
+        (BLANK, " "),
     ]
     ingredient_name = models.ForeignKey(IngredientName, on_delete=models.CASCADE, related_name="ingredient_name")
     measurement = models.IntegerField(default=0)
     unit = models.CharField(max_length=20, choices=UNIT_CHOICES, default=GRAMS)
+
+    def __str__(self):
+        return f"{self.measurement}{self.unit} {self.ingredient_name} "
 
 
 class Category(models.Model):
