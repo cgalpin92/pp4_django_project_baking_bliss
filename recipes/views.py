@@ -9,4 +9,4 @@ from .models import IngredientName, Ingredient, Category, Recipe
 
 class CategoryList(generic.ListView):
     queryset = Category.objects.all()
-    template_name = "category_list.html"
+    template_name = "recipes/index.html"
