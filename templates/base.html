@@ -21,11 +21,15 @@
     <header>
         <h1>Baking Bliss</h1>
         <nav>
-            <div>
-                <ul>
-                    <li>Recipes</li>
-                    <li>About</li>
-                    <li>Sign-In / Sign-Up</li>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><button class="dropdown-item" type="button">Recipes</button></li>
+                    <li><button class="dropdown-item" type="button">About</button></li>
+                    <li><button class="dropdown-item" type="button">Sign-In / Sign-Up</button></li>
                 </ul>
             </div>
         </nav>
