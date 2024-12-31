@@ -1,0 +1,12 @@
+{% extends base.html %}
+
+{% block content %}
+<!-- index.html content starts here -->
+
+<h1>Category List</h1>
+{% for category in object_list %}
+<h2>{{category.category_name}}</h2>
+{% endfor %}
+
+<!-- index.html content ends here -->
+{% endblock %}
