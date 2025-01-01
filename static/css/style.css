@@ -1,7 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Outfit:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 h1 {
-    font-family: 'Outfit', sans-serif;
     font-size: 500%;
     font-weight: 5;
+}
+
+.font-one {
+    font-family: 'Outfit', sans-serif;
+}
+
+.main-color {
+    background-color: #F58871;
+}
+
+.cream-color {
+    background-color: #FCEFE6;
+}
+
+.brown-color {
+    color: #7B573E;
 }
