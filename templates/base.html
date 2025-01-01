@@ -16,27 +16,36 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
-<body>
+<body class="main-color">
     <!-- Header -->
     <header class="cream-color">
-        <h1 class="brown-color font-one">Baking Bliss</h1>
-        <nav>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><button class=" dropdown-item" type="button">Recipes</button></li>
-                    <li><button class="dropdown-item" type="button">About</button></li>
-                    <li><button class="dropdown-item" type="button">Sign-In / Sign-Up</button></li>
-                </ul>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col align-self-center">
+                        <h1 class="brown-color font-one">Baking Bliss</h1>
+                    </div>
+                    <div class="col">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarText" aria-controls="#navbarText" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarText">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">Recipes</li>
+                                <li class="nav-item">About</li>
+                                <li class="nav-item">Sign-In / Sign-Up</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
 
     <!-- Main Content -->
-    <main class="main-color">
+    <main>
         {% block content %}
         <!-- Content goes here -->
         {% endblock content %}
