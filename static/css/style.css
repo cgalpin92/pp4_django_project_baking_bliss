@@ -43,3 +43,8 @@ h1 {
 .cream-font {
     color: #FCEFE6;
 }
+
+.smaller-text {
+    font-size: smaller;
+    font-weight: 200;
+}
