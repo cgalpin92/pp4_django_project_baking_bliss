@@ -15,8 +15,9 @@
                             <h3 class="font-two smaller-text">Category: {{recipe.category}}</h3>
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title font-two text-center">{{recipe.recipe_name}}</h2>
-
+                            <a href="{% url 'recipe_detail' recipe.slug %}" class="recipe-link">
+                                <h3 class="card-title font-two text-center">{{recipe.recipe_name}}</h2>
+                            </a>
                         </div>
                     </div>
                 </div>
