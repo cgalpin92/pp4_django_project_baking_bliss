@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Outfit:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: auto;
+}
+
+h1 {
+    font-size: 180%;
+    font-weight: 5;
+    margin-right: 12%;
+}
+
+.font-one {
+    font-family: 'Outfit', sans-serif;
+}
+
+.font-two {
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.main-color {
+    background-color: #F58871;
+}
+
+.cream-color {
+    background-color: #FCEFE6;
+}
+
+.brown-color {
+    color: #7B573E;
+}
+
+.blush-color {
+    color: #FFD3C5;
+}
+
+.cream-font {
+    color: #FCEFE6;
+}
