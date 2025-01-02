@@ -2,11 +2,30 @@
 
 {% block content %}
 <!-- index.html content starts here -->
-<div>
-    <h2>Category List</h2>
-    {% for category in object_list %}
-    <h3>{{category.category_name}}</h2>
-        {% endfor %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- category list column -->
+        <h2 class="cream-font font-two text-center p-2">Category List</h2>
+        <div class="col-12">
+            <div class="row">
+                {% for category in object_list %}
+                <div class="col">
+                    <div class="card mb-5">
+                        <div class="card-body">
+                            <a href="#">
+                                <h3 class="card-title text-center">{{category.category_name}}</h2>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if forloop.counter|divisibleby:3 %}
+        </div>
+        <div class="row">
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
 </div>
 
 

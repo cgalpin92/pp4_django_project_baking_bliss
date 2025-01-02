@@ -20,6 +20,10 @@ h1 {
     font-family: 'Outfit', sans-serif;
 }
 
+.font-two {
+    font-family: 'Comfortaa', sans-serif;
+}
+
 .main-color {
     background-color: #F58871;
 }
@@ -30,4 +34,12 @@ h1 {
 
 .brown-color {
     color: #7B573E;
+}
+
+.blush-color {
+    color: #FFD3C5;
+}
+
+.cream-font {
+    color: #FCEFE6;
 }
