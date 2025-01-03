@@ -15,9 +15,6 @@ class RecipeList(generic.ListView):
     queryset = Recipe.objects.all()
     template_name = "recipes/index.html"
 
-class Comment(generic.ListView):
-    queryset = Comment.objects.all()
-    template_name = "recipes/recipe_details.html"
 
 def recipe_detail(request, slug):
     
@@ -25,12 +22,16 @@ def recipe_detail(request, slug):
     recipe = get_object_or_404(queryset, slug=slug)
     ingredients = Ingredient.objects.all()
 
+    
+    comments = recipe.comment.all()
+
     return render(
         request,
         "recipes/recipe_details.html",
         {
             "recipe": recipe,
             "ingredients": ingredients,
+            "comments": comments,
         }
     )
 
