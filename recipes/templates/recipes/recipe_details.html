@@ -10,8 +10,8 @@
                 <li>{{ ingredient.measurement }}{{ ingredient.unit }} {{ ingredient.ingredient_name }}</li>
                 {% endfor %}
             </p>
-            <p>Equipment: {{ recipe.equipment }}</p>
-            <p>Method: {{ recipe.method }}</p>
+            <p>Equipment: {{ recipe.equipment|safe }}</p>
+            <p>Method: {{ recipe.method|safe }}</p>
             <p>Author: {{ recipe.author }}</p>
             <p>Category: {{ recipe.category }}</p>
             <p>Difficulty: {{ recipe.difficulty }}</p>

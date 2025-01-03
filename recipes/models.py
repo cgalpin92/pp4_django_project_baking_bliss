@@ -80,3 +80,29 @@ class Recipe(models.Model):
 
     def __str__(self):
         return f"{self.recipe_name}"
+
+
+class Comment(models.Model):
+
+    NO_RATING = "No Rating"
+    ONE_OUT_OF_FIVE = "1/5"
+    TWO_OUT_OF_FIVE = "2/5"
+    THREE_OUT_OF_FIVE = "3/5"
+    FOUR_OUT_OF_FIVE = "4/5"
+    FIVE_OUT_OF_FIVE = "5/5"
+    
+    RATING_CHOICES = [
+        (NO_RATING, "No Rating"),
+        (ONE_OUT_OF_FIVE, "1/5"),
+        (TWO_OUT_OF_FIVE, "2/5"),
+        (THREE_OUT_OF_FIVE, "3/5"),
+        (FOUR_OUT_OF_FIVE, "4/5"),
+        (FIVE_OUT_OF_FIVE, "5/5"),
+    ]
+
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="comment")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="recipe_commenter")
+    body = models.TextField()
+    rating = models.IntegerField(choices=RATING_CHOICES, default=NO_RATING)
+    approved = models.BooleanField(default=False)
+    created_on = models.DateTimeField(auto_now_add=True)
