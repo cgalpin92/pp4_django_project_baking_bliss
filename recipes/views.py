@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 # from django.http import HttpResponse
 from django.views import generic
-from .models import IngredientName, Ingredient, Category, Recipe
+from .models import IngredientName, Ingredient, Category, Recipe, Comment
 
 # Create your views here.
 # def recipe(request):
@@ -14,6 +14,10 @@ from .models import IngredientName, Ingredient, Category, Recipe
 class RecipeList(generic.ListView):
     queryset = Recipe.objects.all()
     template_name = "recipes/index.html"
+
+class Comment(generic.ListView):
+    queryset = Comment.objects.all()
+    template_name = "recipes/recipe_details.html"
 
 def recipe_detail(request, slug):
     
@@ -29,3 +33,4 @@ def recipe_detail(request, slug):
             "ingredients": ingredients,
         }
     )
+

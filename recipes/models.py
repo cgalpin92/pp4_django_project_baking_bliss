@@ -102,7 +102,11 @@ class Comment(models.Model):
 
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="comment")
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="recipe_commenter")
+    comment_title = models.CharField(max_length=50, default="Recipe Comment")
     body = models.TextField()
-    rating = models.IntegerField(choices=RATING_CHOICES, default=NO_RATING)
+    rating = models.CharField(max_length=10, choices=RATING_CHOICES, default=NO_RATING)
     approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.comment_title} by {self.author}"
