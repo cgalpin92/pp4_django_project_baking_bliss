@@ -6,7 +6,7 @@
     <div class="row">
         <!-- recipe list column -->
         <h2 class="cream-font font-two text-center p-2">Recipes</h2>
-        <a href="{% url 'category' %}">Categories</a>
+        <a href="{% url 'category' %}"><button type="button" class="btn btn-danger">Categories</button></a>
         <div class="col-12">
             <div class="row">
                 {% for recipe in object_list %}

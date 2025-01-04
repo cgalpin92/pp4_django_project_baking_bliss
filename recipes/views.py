@@ -19,21 +19,19 @@ class CategoryList(generic.ListView):
     template_name = "recipes/category.html"
 
 
-
-
 def category_recipes(request, category):
     
-    queryset = Recipe.objects.filter(
-        category__name__contains = category
-    )
+    recipes = Recipe.objects.filter(category)
     return render(
         request,
         "recipes/recipe_category.html",
         {
             "category": category,
-            "recipe": recipe,
+            "recipes": recipes,
         }
     )
+
+
 
 
 
