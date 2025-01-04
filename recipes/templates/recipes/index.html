@@ -4,8 +4,9 @@
 <!-- index.html content starts here -->
 <div class="container-fluid">
     <div class="row">
-        <!-- category list column -->
+        <!-- recipe list column -->
         <h2 class="cream-font font-two text-center p-2">Recipes</h2>
+        <a href="{% url 'category' %}">Categories</a>
         <div class="col-12">
             <div class="row">
                 {% for recipe in object_list %}

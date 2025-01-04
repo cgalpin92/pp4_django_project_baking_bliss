@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        {% for recipe in recipes %}
+        <div class="col">
+            <div class="card mb-5">
+                <div>
+                    <h3 class="font-two smaller-text">Category: {{recipe.category}}</h3>
+                </div>
+                <div class="card-body">
+                    <a href="{% url 'recipe_detail' recipe.slug %}" class="recipe-link">
+                        <h3 class="card-title font-two text-center">{{recipe.recipe_name}}</h2>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

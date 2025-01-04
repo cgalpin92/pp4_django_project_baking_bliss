@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="cream-font font-two text-center p-2">Categories</h2>
+<a href="{% url 'home' %}">All Recipes</a>
+<div class="col-12">
+    <div class="row">
+        {% for category in object_list %}
+        <div class="col">
+            <div class="card mb-5">
+                <div class="card-body">
+                    <a href="#">
+                        <h3 class="card-title font-two text-center">{{category.category_name}}</h2>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    {% endfor %}
+</div>
+
+
+<!-- category.html content ends here -->
+{% endblock %}
