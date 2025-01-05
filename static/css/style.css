@@ -180,6 +180,10 @@ footer {
         align-items: baseline;
     }
 
+    .nav-item-three {
+        margin-left: 296%;
+    }
+
     #nav-item-one {
         margin-left: 40%;
     }
@@ -188,9 +192,11 @@ footer {
         margin-left: 223%;
     }
 
-    #nav-item-three {
-        margin-left: 296%;
+    #nav-item-four {
+        margin-left: 588%;
     }
+
+
 
     .btn {
         font-size: 120%;
