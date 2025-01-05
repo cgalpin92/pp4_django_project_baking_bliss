@@ -2,40 +2,45 @@
 {% block content %}
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <h3>{{ recipe.recipe_name }}</h3>
-            <p>Ingredients:
-                {% for ingredient in recipe.ingredients.all %}
-                <li>{{ ingredient.measurement }}{{ ingredient.unit }} {{ ingredient.ingredient_name }}</li>
-                {% endfor %}
-            </p>
-            <p>Equipment: {{ recipe.equipment|safe }}</p>
-            <p>Method: {{ recipe.method|safe }}</p>
-            <p>Author: {{ recipe.author }}</p>
-            <p>Category: {{ recipe.category }}</p>
-            <p>Difficulty: {{ recipe.difficulty }}</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col card">
-            <h4>Comments:</h4>
-            {% for comment in comments %}
-            <div class="card-body">
-                <h5>{{ comment.comment_title }}</h5>
-                <p>{{ comment.body }}</p>
-                <p>author: {{ comment.author }}</p>
-                <p>rating: {{ comment.rating }}</p>
+    <div class="col-12">
+        <div class="row">
+            <div class="col-md-6">
+                <h3>{{ recipe.recipe_name }}</h3>
+                <p>Ingredients:
+                    {% for ingredient in recipe.ingredients.all %}
+                    <li>{{ ingredient.measurement }}{{ ingredient.unit }} {{ ingredient.ingredient_name }}</li>
+                    {% endfor %}
+                </p>
+                <p>Equipment: {{ recipe.equipment|safe }}</p>
             </div>
-            {% endfor %}
+            <div class="col-md-12">
+                <p>Method: {{ recipe.method|safe }}</p>
+            </div>
+            <div class="col-md-4">
+                <p>Author: {{ recipe.author }}</p>
+                <p>Category: {{ recipe.category }}</p>
+                <p>Difficulty: {{ recipe.difficulty }}</p>
+            </div>
         </div>
         <div class="row">
-            <div class="col">
-                <a href="{% url 'home' %}"><button type="button" class="btn btn-danger">Back to Recipes</button></a>
+            <div class="col card">
+                <h4>Comments:</h4>
+                {% for comment in comments %}
+                <div class="card-body">
+                    <h5>{{ comment.comment_title }}</h5>
+                    <p>{{ comment.body }}</p>
+                    <p>author: {{ comment.author }}</p>
+                    <p>rating: {{ comment.rating }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <div class="col">
+                    <a href="{% url 'home' %}"><button type="button" class="btn btn-danger">Back to Recipes</button></a>
+                </div>
             </div>
         </div>
     </div>
-
 </div>
 
 {% endblock %}
