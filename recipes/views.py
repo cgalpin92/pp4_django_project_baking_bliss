@@ -31,7 +31,18 @@ def category_recipes(request, category):
             "recipes": recipes,
         }
     )
+"""
+def recipe_list(request):
+    recipe_list = Recipe.objects.all()
 
+    return render(
+        request,
+        "recipes/index.html",
+        {
+            "recipe_list": recipe_list
+        }
+    )
+"""
 
 def recipe_detail(request, slug):
     
@@ -61,3 +72,23 @@ def recipe_detail(request, slug):
         }
     )
 
+
+def recipe_upload(request):
+
+    if request.method == "POST":
+        recipe_form = RecipeForm(data=request.POST)
+        if recipe_form.is_valid():
+            recipe = recipe_form.save(commit=False)
+            recipe.author = request.user
+            recipe.save()
+
+    recipe_form = RecipeForm()
+        
+
+    return render(
+        request,
+        "recipes/recipe_upload.html",
+        {
+            "recipe_form": recipe_form,
+        }
+    )

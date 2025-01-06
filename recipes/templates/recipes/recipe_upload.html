@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<div class="containter-fluid">
+    <div class="row">
+        <h2 class="cream-font font-two text-center p-2"> Upload a Recipe</h2>
+        <div class="col card">
+            <div class="card-body">
+                {% if user.is_authenticated %}
+                <h3>Create New Recipe</h3>
+                <form id="recipeForm" method="post">
+                    {{ recipe_form | crispy }}
+                    {% csrf_token %}
+                    <button id="submitButton" type="submit">Upload Recipe</button>
+                </form>
+                {% else %}
+                <p>You need to be signed in upload a recipe</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
