@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+
+
 {% block content %}
 
 <div class="container-fluid">
@@ -35,6 +40,21 @@
                     <p>rating: {{ comment.rating }}</p>
                 </div>
                 {% endfor %}
+            </div>
+            <div class="col card">
+                <div class="card-body">
+                    {% if user.is_authenticated %}
+                    <h5>Leave a comment about this recipe:</h5>
+                    <p>Comment by: {{ user.username }}</p>
+                    <form id="commentForm" method="post">
+                        {{ comment_form | crispy }}
+                        {% csrf_token %}
+                        <button id="submitButton" type="submit">Submit</button>
+                    </form>
+                    {% else %}
+                    <p>You need to be signed in leave a comment about a recipe</p>
+                    {% endif %}
+                </div>
             </div>
             <div class="row">
                 <div class="col">

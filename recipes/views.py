@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 # from django.http import HttpResponse
 from django.views import generic
 from .models import IngredientName, Ingredient, Category, Recipe, Comment, User
+from .forms import RecipeForm, CommentForm
 
 # Create your views here.
 # def recipe(request):
@@ -32,15 +33,13 @@ def category_recipes(request, category):
     )
 
 
-
-
-
 def recipe_detail(request, slug):
     
     queryset = Recipe.objects.filter(status=1)
     recipe = get_object_or_404(queryset, slug=slug)
     ingredients = Ingredient.objects.all()
     comments = recipe.comment.all()
+    comment_form = CommentForm()
     
 
     return render(
@@ -50,6 +49,7 @@ def recipe_detail(request, slug):
             "recipe": recipe,
             "ingredients": ingredients,
             "comments": comments,
+            "comment_form": comment_form,
         }
     )
 
