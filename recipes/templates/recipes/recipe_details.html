@@ -60,7 +60,21 @@
                         <h5>{{ comment.comment_title }}</h5>
                         <p>{{ comment.body }}</p>
                         <p>author: {{ comment.author }}</p>
-                        <p>Rating: {{ comment.rating }}</p>
+                        {% if comment.rating == "1/5" %}
+                        <p>rating: <i class="fa-solid fa-star"></i></p>
+                        {% elif comment.rating == "2/5" %}
+                        <p>rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+                        {% elif comment.rating == "3/5" %}
+                        <p>rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i></p>
+                        {% elif comment.rating == "4/5" %}
+                        <p>rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+                        {% elif comment.rating == "5/5" %}
+                        <p>rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i></p>
+                        {% endif %}
                     </div>
                     {% endfor %}
                 </div>
