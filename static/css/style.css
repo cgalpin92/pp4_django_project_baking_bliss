@@ -73,6 +73,10 @@ main {
     color: #FFD3C5;
 }
 
+.blush-background {
+    background-color: #FFD3C5
+}
+
 .cream-font {
     color: #FCEFE6;
 }
@@ -106,12 +110,17 @@ main {
     color: #701d0d;
 }
 
+.recipe-card {
+    font-size: smaller;
+}
+
+
+
 /* form styles */
 
 ul {
     list-style-type: none;
 }
-
 
 /* footer styles */
 
@@ -161,6 +170,28 @@ footer {
         margin-top: -22%;
         font-size: 85%;
     }
+
+    .recipe-card {
+        font-size: 100%;
+    }
+
+    .margins {
+        margin-top: 4%;
+        margin-left: 10%;
+    }
+
+    .padding {
+        padding-top: 3%;
+        padding-bottom: 3%;
+        padding-left: 42%;
+
+    }
+
+    .method {
+        background-color: #FFD3C5;
+    }
+
+
 }
 
 
@@ -209,11 +240,31 @@ footer {
         margin-left: 588%;
     }
 
-
-
     .btn-one-position {
         font-size: 120%;
         margin-left: 85%;
+    }
+
+    .margins {
+        margin-top: 5%;
+        margin-left: 7%;
+    }
+
+    .ingredients {
+        padding-left: 10%;
+    }
+
+    .equipment {
+        padding-left: 5%;
+    }
+
+    .method {
+        margin: 7%;
+    }
+
+    .padding {
+        padding-left: 40%;
+        padding-bottom: 4%;
     }
 }
 

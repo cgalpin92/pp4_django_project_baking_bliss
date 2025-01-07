@@ -1,24 +1,30 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2 class="cream-font font-two text-center p-2">Categories</h2>
-<a href="{% url 'home' %}">All Recipes</a>
-<div class="col-12">
+<div class="container-fluid">
     <div class="row">
-        {% for category in object_list %}
-        <div class="col">
-            <div class="card mb-5">
-                <div class="card-body">
-                    <a href="{% url 'recipe_category' %}">
-                        <h3 class="card-title font-two text-center">{{category.category_name}}</h2>
-                    </a>
+        <h2 class="cream-font font-two text-center p-2">Categories</h2>
+        <a href="{% url 'home' %}">All Recipes</a>
+        <div class="col-12">
+            <div class="row">
+                {% for category in object_list %}
+                <div class="col-md-4 col-lg-3 left">
+                    <div class="card mb-5 cream-color">
+                        <div class="card-body">
+                            <a href="{% url 'recipe_category' %}">
+                                <h3 class="card-title font-two text-center">{{category.category_name}}</h2>
+                            </a>
+                        </div>
+                    </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
+        <div class="row">
+
+        </div>
+
     </div>
-</div>
-<div class="row">
-    {% endfor %}
 </div>
 
 

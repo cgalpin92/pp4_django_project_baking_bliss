@@ -2,67 +2,112 @@
 {% load crispy_forms_tags %}
 
 
-
-
 {% block content %}
 
 <div class="container-fluid">
-    <div class="col-12">
-        <!-- Displaying the posts -->
-        <div class="row">
-            <div class="col-md-6">
-                <h3>{{ recipe.recipe_name }}</h3>
-                <p>Ingredients:
-                    {% for ingredient in recipe.ingredients.all %}
-                    <li>{{ ingredient.measurement }}{{ ingredient.unit }} {{ ingredient.ingredient_name }}</li>
-                    {% endfor %}
-                </p>
-                <p>Equipment: {{ recipe.equipment|safe }}</p>
-            </div>
-            <div class="col-md-12">
-                <p>Method: {{ recipe.method|safe }}</p>
-            </div>
-            <div class="col-md-4">
-                <p>Author: {{ recipe.author }}</p>
-                <p>Category: {{ recipe.category }}</p>
-                <p>Difficulty: {{ recipe.difficulty }}</p>
-            </div>
-        </div>
-        <!-- Displaying the comments -->
-        <div class="row">
-            <div class="col card">
-                <h4>Comments:</h4>
-                {% for comment in comments %}
-                <div class="card-body">
-                    <h5>{{ comment.comment_title }}</h5>
-                    <p>{{ comment.body }}</p>
-                    <p>author: {{ comment.author }}</p>
-                    <p>rating: {{ comment.rating }}</p>
-                </div>
-                {% endfor %}
-            </div>
-            <div class="col card">
-                <div class="card-body">
-                    {% if user.is_authenticated %}
-                    <h5>Leave a comment about this recipe:</h5>
-                    <p>Comment by: {{ user.username }}</p>
-                    <form id="commentForm" method="post">
-                        {{ comment_form | crispy }}
-                        {% csrf_token %}
-                        <button id="submitButton" type="submit">Submit</button>
-                    </form>
-                    {% else %}
-                    <p>You need to be signed in leave a comment about a recipe</p>
-                    {% endif %}
+    <!-- Displaying the posts -->
+    <div class="row">
+        <h2 class="cream-font font-two text-center">{{ recipe.recipe_name }}</h2>
+    </div>
+    <div class="card recipe-card cream-color font-three">
+        <div class="card-body">
+            <div class="container-fluid-center">
+                <div class="row margins">
+                    <div class="col-sm-12 col-md-6 mb-3 ingredients">
+                        <h3 class="lilac-font">Ingredients:</h3>
+                        {% for ingredient in recipe.ingredients.all %}
+                        <li class="brown-color">{{ ingredient.measurement }}{{ ingredient.unit }}
+                            {{ ingredient.ingredient_name }}
+                        </li>
+                        {% endfor %}
+                    </div>
+                    <div class="col equipment">
+                        <h3 class="lilac-font">Equipment:</h3>
+                        <ul class="brown-color ps-0">
+                            <li>
+                                {{ recipe.equipment|safe }}
+                            </li>
+
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    <a href="{% url 'home' %}"><button type="button" class="btn btn-danger">Back to Recipes</button></a>
+            <div class="container-fluid">
+                <div class="row">
+
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col method">
+                        <h3 class="lilac-font padding">Method:</h3>
+                        <p class="brown-color">{{ recipe.method|safe }}</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+    <!-- Displaying the comments -->
+    <div class="container-fluid">
+        <h4 class="font-two cream-font">Comments:</h4>
+        <div class="row">
+            <div class="col">
+                <div class="card cream-color font-three">
+                    {% for comment in comments %}
+                    <div class="card-body brown-color">
+                        <h5>{{ comment.comment_title }}</h5>
+                        <p>{{ comment.body }}</p>
+                        <p>author: {{ comment.author }}</p>
+                        <p>Rating: {{ comment.rating }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {% if user.is_authenticated %}
+                <h5>Leave a comment about this recipe:</h5>
+                <div class="card">
+                    <div class="card-body">
+                        <p>Comment by: {{ user.username }}</p>
+                        <form id="commentForm" method="post">
+                            {{ comment_form | crispy }}
+                            {% csrf_token %}
+                            <button id="submitButton" type="submit">Submit</button>
+                        </form>
+                        {% else %}
+                        <p>You need to be signed in leave a comment about a recipe</p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+</div>
+</div>
+
+
+</div>
+</div>
+</div>
+
+
+
+<div class="row">
+    <div class="col">
+        <a href="{% url 'home' %}"><button type="button" class="btn btn-danger">Back to Recipes</button></a>
+    </div>
+</div>
+</div>
+
 </div>
 
 {% endblock %}
