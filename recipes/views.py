@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 # from django.http import HttpResponse
 from django.views import generic
+from django.utils.text import slugify
 from .models import IngredientName, Ingredient, Category, Recipe, Comment, User
 from .forms import RecipeForm, CommentForm
 
@@ -21,13 +22,14 @@ class CategoryList(generic.ListView):
 
 
 def category_recipes(request, category):
+    print(category)
     
-    recipes = Recipe.objects.filter(category)
+    queryset = Category.objects.filter().values('category_name')
+    recipes = Recipe.objects.filter(queryset)
     return render(
         request,
         "recipes/recipe_category.html",
         {
-            "category": category,
             "recipes": recipes,
         }
     )
@@ -80,6 +82,7 @@ def recipe_upload(request):
         if recipe_form.is_valid():
             recipe = recipe_form.save(commit=False)
             recipe.author = request.user
+            recipe.slug = slugify(recipe.recipe_name)
             recipe.save()
 
     recipe_form = RecipeForm()
