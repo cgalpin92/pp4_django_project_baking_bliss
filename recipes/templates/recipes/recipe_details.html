@@ -9,11 +9,11 @@
     <div class="row">
         <h2 class="cream-font font-two text-center">{{ recipe.recipe_name }}</h2>
     </div>
-    <div class="card recipe-card cream-color font-three">
+    <div class="card cream-color font-three" id="recipe-card">
         <div class="card-body">
             <div class="container-fluid-center">
                 <div class="row margins">
-                    <div class="col-sm-12 col-md-6 mb-3 ingredients">
+                    <div class="col-sm-12 col-md-6 mb-3" id="ingredients">
                         <h3 class="lilac-font">Ingredients:</h3>
                         {% for ingredient in recipe.ingredients.all %}
                         <li class="brown-color">{{ ingredient.measurement }}{{ ingredient.unit }}
@@ -21,25 +21,19 @@
                         </li>
                         {% endfor %}
                     </div>
-                    <div class="col equipment">
+                    <div class="col" id="equipment">
                         <h3 class="lilac-font">Equipment:</h3>
                         <ul class="brown-color ps-0">
                             <li>
                                 {{ recipe.equipment|safe }}
                             </li>
-
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="container-fluid">
                 <div class="row">
-
-                </div>
-            </div>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col method">
+                    <div class="col" id="method">
                         <h3 class="lilac-font padding">Method:</h3>
                         <p class="brown-color">{{ recipe.method|safe }}</p>
                     </div>
@@ -47,14 +41,15 @@
             </div>
         </div>
     </div>
-
-
-    <!-- Displaying the comments -->
+    <!-- Comments Section -->
     <div class="container-fluid">
-        <h4 class="font-two cream-font">Comments:</h4>
-        <div class="row">
-            <div class="col">
-                <div class="card cream-color font-three">
+        <div class="row mt-4">
+            <!-- Displaying the comments -->
+            <div class="col-lg-6">
+                <div class="card cream-color font-two" id="comments-card">
+                    <card class="title">
+                        <h4 class="lilac-font" id="comments">Comments:</h4>
+                    </card>
                     {% for comment in comments %}
                     <div class="card-body brown-color">
                         <h5>{{ comment.comment_title }}</h5>
@@ -79,18 +74,20 @@
                     {% endfor %}
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col">
+            <!-- Comment Form -->
+            <div class="col" id="comment-form">
                 {% if user.is_authenticated %}
-                <h5>Leave a comment about this recipe:</h5>
-                <div class="card">
-                    <div class="card-body">
+
+                <div class="card cream-color font-two">
+                    <div class="card-title">
+                        <h4 class="lilac-font" id="comment-form-title">Leave a comment about this recipe:</h4>
+                    </div>
+                    <div class="card-body brown-color">
                         <p>Comment by: {{ user.username }}</p>
                         <form id="commentForm" method="post">
                             {{ comment_form | crispy }}
                             {% csrf_token %}
-                            <button id="submitButton" type="submit">Submit</button>
+                            <button class="btn font-two lilac-font" id="submitButton" type="submit">Submit</button>
                         </form>
                         {% else %}
                         <p>You need to be signed in leave a comment about a recipe</p>
@@ -99,29 +96,13 @@
                 {% endif %}
             </div>
         </div>
-
-
-
-
-
     </div>
-</div>
-</div>
-
-
-</div>
-</div>
-</div>
-
-
-
-<div class="row">
-    <div class="col">
-        <a href="{% url 'home' %}"><button type="button" class="btn btn-danger">Back to Recipes</button></a>
+    <div class="row">
+        <div class="col">
+            <a href="{% url 'home' %}"><button type="button" class="btn font-two lilac-font">Back to
+                    Recipes</button></a>
+        </div>
     </div>
-</div>
-</div>
-
 </div>
 
 {% endblock %}

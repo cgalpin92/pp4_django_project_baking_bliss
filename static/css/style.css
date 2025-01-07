@@ -110,9 +110,20 @@ main {
     color: #701d0d;
 }
 
-.recipe-card {
+#recipe-card {
     font-size: smaller;
 }
+
+#comments-card {
+    font-size: smaller;
+}
+
+#comments {
+    padding: 3%;
+}
+
+
+
 
 
 
@@ -120,6 +131,14 @@ main {
 
 ul {
     list-style-type: none;
+}
+
+#comment-form {
+    padding-top: 7%;
+}
+
+#comment-form-title {
+    padding: 3%;
 }
 
 /* footer styles */
@@ -171,7 +190,7 @@ footer {
         font-size: 85%;
     }
 
-    .recipe-card {
+    #recipe-card {
         font-size: 100%;
     }
 
@@ -187,8 +206,12 @@ footer {
 
     }
 
-    .method {
+    #method {
         background-color: #FFD3C5;
+    }
+
+    #comments-card {
+        font-size: 100%;
     }
 
 
@@ -250,21 +273,25 @@ footer {
         margin-left: 7%;
     }
 
-    .ingredients {
+    #ingredients {
         padding-left: 10%;
     }
 
-    .equipment {
+    #equipment {
         padding-left: 5%;
     }
 
-    .method {
+    #method {
         margin: 7%;
     }
 
     .padding {
         padding-left: 40%;
         padding-bottom: 4%;
+    }
+
+    #comment-form {
+        padding-top: 0%;
     }
 }
 
