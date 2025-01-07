@@ -59,7 +59,7 @@ def recipe_detail(request, slug):
             comment.save()
 
     comment_form = CommentForm()
-    
+        
 
     return render(
         request,
@@ -92,3 +92,4 @@ def recipe_upload(request):
             "recipe_form": recipe_form,
         }
     )
+    

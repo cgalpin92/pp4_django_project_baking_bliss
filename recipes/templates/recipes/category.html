@@ -10,6 +10,23 @@
                 {% for category in object_list %}
                 <div class="col-md-4 col-lg-3 left">
                     <div class="card mb-5 cream-color">
+                        {% if category.category_name == "Cakes" %}
+                        <img class="category-image" src="/static/images/cupcakes.png" alt="">
+                        {% elif category.category_name == "Bread" %}
+                        <img class="category-image" src="/static/images/bread.png" alt="">
+                        {% elif category.category_name == "Sweets" %}
+                        <img class="category-image" src="/static/images/truffles.png" alt="">
+                        {% elif category.category_name == "Cookies" %}
+                        <img class="category-image" src="/static/images/cookies.png" alt="">
+                        {% elif category.category_name == "Desserts" %}
+                        <img class="category-image" src="/static/images/chocolate_torte.png" alt="">
+                        {% elif category.category_name == "Breakfast Items" %}
+                        <img class="category-image" src="/static/images/pancakes.png" alt="">
+                        {% elif category.category_name == "Biscuits" %}
+                        <img class="category-image" src="/static/images/macaroons.png" alt="">
+                        {% else %}
+                        <img class="category-image" src="/static/images/baking.png" alt="">
+                        {% endif %}
                         <div class="card-body">
                             <a href="{% url 'recipe_category' %}">
                                 <h3 class="card-title font-two text-center">{{category.category_name}}</h2>
