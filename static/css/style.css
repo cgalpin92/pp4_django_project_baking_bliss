@@ -122,6 +122,10 @@ main {
     font-size: smaller;
 }
 
+.faded {
+    color: transparent;
+}
+
 #comments-card {
     font-size: smaller;
 }
