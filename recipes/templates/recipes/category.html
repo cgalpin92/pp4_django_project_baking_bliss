@@ -28,7 +28,7 @@
                         <img class="category-image" src="/static/images/baking.png" alt="">
                         {% endif %}
                         <div class="card-body">
-                            <a href="{% url 'recipe_category' %}">
+                            <a href="{% url 'recipe_category' category.category_name %}">
                                 <h3 class="card-title font-two text-center">{{category.category_name}}</h2>
                             </a>
                         </div>

@@ -1,9 +1,35 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div>
-    <h3>Recipes</h3>
+<div class="container-fluid">
+    <div class="row">
 
+        <!-- recipe list column -->
+        <h2 class="cream-font font-two text-center p-2">Recipes</h2>
+        <a href="#"><button type="button" class="btn btn-one-position font-two lilac-font">All Recipes</button></a>
+        <div class="col-12 left">
+            <div class="row">
+                {% for recipe in recipes %}
+                <div class="col-md-4 col-lg-3">
+                    <div class="card mb-5 cream-color">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <a href="{% url 'recipe_detail' recipe.slug %}" class="recipe-link">
+                                    <h3 class="card-title font-two text-center">{{recipe.recipe_name}}</h2>
+                                </a>
+                            </div>
+                            <div class="card-text">
+                                <p class="font-two smaller-text lilac-font">Category: {{recipe.category}}</p>
+                                <p class="font-two smaller-text lilac-font">Author: {{recipe.author}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+    </div>
 </div>
-
 {% endblock %}

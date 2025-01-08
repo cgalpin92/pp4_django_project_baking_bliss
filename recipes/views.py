@@ -21,11 +21,11 @@ class CategoryList(generic.ListView):
     template_name = "recipes/category.html"
 
 
-def category_recipes(request, category):
-    print(category)
+def recipe_by_category(request, category):
     
-    queryset = Category.objects.filter().values('category_name')
-    recipes = Recipe.objects.filter(queryset)
+    category_selected = Category.objects.get(category_name__icontains=category)
+    recipes = Recipe.objects.filter(category=category_selected)
+    
     return render(
         request,
         "recipes/recipe_category.html",
