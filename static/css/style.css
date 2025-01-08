@@ -67,6 +67,14 @@ li.nav-item:hover {
     color: #701d0d;
 }
 
+.dropdown-font {
+    color: #F58871;
+}
+
+.dropdown-font:hover {
+    color: #701d0d;
+}
+
 /* Main Styles */
 
 main {
@@ -122,9 +130,6 @@ main {
     font-size: smaller;
 }
 
-.faded {
-    color: transparent;
-}
 
 #comments-card {
     font-size: smaller;
@@ -133,10 +138,6 @@ main {
 #comments {
     padding: 3%;
 }
-
-
-
-
 
 
 /* form styles */
@@ -260,7 +261,7 @@ footer {
     }
 
     .nav-item-three {
-        margin-left: 296%;
+        margin-left: 214%;
     }
 
     #nav-item-one {
@@ -271,7 +272,7 @@ footer {
         margin-left: 223%;
     }
 
-    #nav-item-four {
+    .nav-item-four {
         margin-left: 588%;
     }
 
