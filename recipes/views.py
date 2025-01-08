@@ -87,9 +87,10 @@ def recipe_upload(request):
             recipe.author = request.user
             recipe.slug = slugify(recipe.recipe_name)
             recipe.save()
+            recipe_form.save_m2m()
 
     recipe_form = RecipeForm()
-        
+    print(recipe_form)    
 
     return render(
         request,
