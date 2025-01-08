@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 # from django.http import HttpResponse
 from django.views import generic
 from django.utils.text import slugify
+from django.contrib import messages
 from .models import IngredientName, Ingredient, Category, Recipe, Comment, User
 from .forms import RecipeForm, CommentForm
 
@@ -88,6 +89,10 @@ def recipe_upload(request):
             recipe.slug = slugify(recipe.recipe_name)
             recipe.save()
             recipe_form.save_m2m()
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Recipe submitted for approval'
+            )
 
     recipe_form = RecipeForm()
     print(recipe_form)    
