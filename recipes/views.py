@@ -11,14 +11,17 @@ from .forms import RecipeForm, CommentForm
 
 
 
-class RecipeList(generic.ListView):
-    queryset = Recipe.objects.all()
-    template_name = "recipes/index.html"
-
+# class RecipeList(generic.ListView):
+#     queryset = Recipe.objects.all()
+#     template_name = "recipes/index.html"
 
 class CategoryList(generic.ListView):
     queryset = Category.objects.all()
-    template_name = "recipes/category.html"
+    template_name = "recipes/index.html"
+
+class RecipeList(generic.ListView):
+    queryset = Recipe.objects.all()
+    template_name = "recipes/recipe_list.html"
 
 
 def recipe_by_category(request, category):
