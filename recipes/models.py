@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 STATUS = ((0, "Draft"), (1, "Published"))
 
 # Create your models here.
+
+
 class IngredientName(models.Model):
     name = models.CharField(max_length=100, unique=True)
     author = models.ForeignKey(User, on_delete=models.PROTECT, related_name="ingredient_author")
@@ -70,6 +72,8 @@ class Recipe(models.Model):
     slug = models.SlugField(max_length=100, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="recipe_post")
     ingredients = models.ManyToManyField(Ingredient)
+    #ingredients = models.TextField()
+    #other_ingredients = models.TextField(max_length=100, null=True)
     equipment = models.TextField()
     method = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="recipe_category")

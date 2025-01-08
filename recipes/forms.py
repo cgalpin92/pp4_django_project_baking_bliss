@@ -1,4 +1,4 @@
-from .models import Recipe, Comment
+from .models import Recipe, Comment, Ingredient
 from django import forms
 
 
@@ -7,6 +7,10 @@ class RecipeForm(forms.ModelForm):
     class Meta:
         model = Recipe
         fields = ('recipe_name', 'ingredients', 'equipment', 'method', 'category', 'difficulty')
+
+    ingredients = forms.ModelMultipleChoiceField(
+        queryset=Ingredient.objects.all(),widget=forms.CheckboxSelectMultiple
+    )
 
 
 class CommentForm(forms.ModelForm):
