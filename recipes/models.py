@@ -73,7 +73,7 @@ class Recipe(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="recipe_post")
     ingredients = models.ManyToManyField(Ingredient)
     #ingredients = models.TextField()
-    #other_ingredients = models.TextField(max_length=100, null=True)
+    other_ingredients = models.TextField(max_length=100, null=True, blank=True)
     equipment = models.TextField()
     method = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="recipe_category")
