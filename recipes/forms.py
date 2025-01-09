@@ -9,7 +9,7 @@ class RecipeForm(forms.ModelForm):
         fields = ('recipe_name', 'ingredients', 'other_ingredients', 'equipment', 'method', 'category', 'difficulty')
 
     ingredients = forms.ModelMultipleChoiceField(
-        queryset=Ingredient.objects.all(),widget=forms.CheckboxSelectMultiple
+        queryset=Ingredient.objects.all().order_by('ingredient_name'),widget=forms.CheckboxSelectMultiple
     )
 
 
