@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- recipe list column -->
+        <h2 class="cream-font font-two text-center mb-5">My Recipes</h2>
+        <div class="col-12 left">
+            <div class="row">
+                {% if profile|length == 0 %}
+                <h3 class="cream-font font-two text-center p-2">You have no recipes</h3>
+                <p class="cream-font font-three">Once you have uploaded a recipe you will be able to view
+                    them here</p>
+                {% else %}
+                {% for recipe in profile %}
+                <div class="col-md-4 col-lg-3">
+                    <div class="card mb-5 cream-color">
+                        <div class="card-body">
+                            <div class="card-title">
+                                {% if recipe.status == 1 %}
+                                <a href="{% url 'recipe_detail' recipe.slug %}" class="recipe-link">
+                                    <h3 class="card-title font-two text-center">{{recipe.recipe_name}}</h3>
+                                </a>
+                                {% elif recipe.status == 0 %}
+                                <a href="#">
+                                    <h3 class="font-two text-center">{{recipe.recipe_name}}</h3>
+                                </a>
+                                {% endif %}
+                            </div>
+                            <div class="card-text">
+                                <p class="font-two smaller-text lilac-font">Category: {{recipe.category}}</p>
+                                <p class="font-two smaller-text lilac-font">Author: {{recipe.author}}</p>
+                                <p class="font-two smaller-text brown-color">{% if recipe.status == 0%}Awaiting
+                                    approval{% endif %}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+
+        {% endblock %}

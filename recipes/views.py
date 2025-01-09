@@ -36,7 +36,25 @@ def recipe_by_category(request, category):
         {
             "recipes": recipes,
         }
+        
     )
+
+def recipe_by_author(request):
+    
+    user = get_object_or_404(User, username=request.user )
+    profile = Recipe.objects.filter(author=user)
+
+    return render(
+        request,
+        "recipes/recipe_user.html",
+        {
+            "user": user,
+            "profile": profile
+        }
+    )
+
+
+
 """
 def recipe_list(request):
     recipe_list = Recipe.objects.all()
@@ -90,8 +108,8 @@ def recipe_upload(request):
             recipe.save()
             recipe_form.save_m2m()
             messages.add_message(
-                request, messages.SUCCESS,
-                'Recipe submitted for approval'
+                request, messages.success,
+                'Your Recipe has been submitted for approval'
             )
 
     recipe_form = RecipeForm()
