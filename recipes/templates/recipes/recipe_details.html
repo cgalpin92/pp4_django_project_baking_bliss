@@ -106,8 +106,10 @@
     </div>
     <div class="row">
         <div class="col">
-            <a href="{% url 'home' %}"><button type="button" class="btn font-two lilac-font">Back to
-                    Recipes</button></a>
+            <button onclick="window.history.back();" type="button" class="btn font-two lilac-font">Back</button>
+        </div>
+        <div class="col">
+            <a href="{% url 'recipes' %}"><button type="button" class="btn font-two lilac-font">All Recipes</button></a>
         </div>
     </div>
 </div>
