@@ -114,3 +114,5 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"{self.comment_title} by {self.author}"
+
+

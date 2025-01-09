@@ -87,6 +87,7 @@
 
     <!-- Main Content -->
     <main>
+
         <!-- displaying Django messages -->
         <nav>
             <div class="container">
@@ -101,6 +102,15 @@
                         {% endfor %}
                     </div>
                 </div>
+            </div>
+        </nav>
+        <nav>
+            <div class="containter font-two smaller-text cream-font" id="username-font">
+                {% if user.is_authenticated %}
+                <p>Hi {{ user }}</p>
+                {% else %}
+                <p></p>
+                {% endif %}
             </div>
         </nav>
         {% block content %}
