@@ -139,6 +139,17 @@ main {
     padding: 3%;
 }
 
+#message-alignment {
+    margin-top: -7%;
+    text-align: center;
+    font-size: smaller;
+}
+
+.btn-close {
+    margin-right: 44%;
+    margin-top: 8%;
+}
+
 
 /* form styles */
 
@@ -173,7 +184,11 @@ footer {
     }
 
     .btn-one-position {
-        margin-top: -46%;
+        margin-top: -67%;
+    }
+
+    #message-alignment {
+        font-size: 60%;
     }
 }
 
@@ -229,6 +244,15 @@ footer {
 
     #comments-card {
         font-size: 100%;
+    }
+
+    #message-alignment {
+        font-size: 100%;
+    }
+
+    .btn-close {
+        margin-right: 48%;
+        margin-top: 5%;
     }
 
 
@@ -314,6 +338,11 @@ footer {
     #comment-form {
         padding-top: 0%;
     }
+
+    #message-alignment {
+        margin-top: -11%;
+        font-size: 125%;
+    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -332,4 +361,7 @@ footer {
         padding-bottom: 4%;
     }
 
+    #message-alignment {
+        font-size: 170%;
+    }
 }
