@@ -13,6 +13,7 @@ urlpatterns = [
    path('my_recipes/', views.recipe_by_author, name="users_recipe"),
    path('<str:category>', views.recipe_by_category, name="recipe_category"),
    path('<slug:slug>/', views.recipe_detail, name="recipe_detail"),
+   path('<slug:slug>/edit_comment/<int:comment_id>', views.comment_edit, name='comment_edit'),
    
    
 ]

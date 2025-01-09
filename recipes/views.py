@@ -1,8 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 # from django.http import HttpResponse
 from django.views import generic
 from django.utils.text import slugify
 from django.contrib import messages
+from django.http import HttpResponseRedirect
 from .models import IngredientName, Ingredient, Category, Recipe, Comment, User
 from .forms import RecipeForm, CommentForm
 
@@ -124,4 +125,24 @@ def recipe_upload(request):
             "recipe_form": recipe_form,
         }
     )
-    
+
+
+def comment_edit(request, slug, comment_id):
+
+    if request.method == "POST":
+
+        queryset = Recipe.objects.filter(status=1)
+        recipe = get_object_or_404(queryset, slug=slug)
+        comment = get_object_or_404(Comment, pk=comment_id)
+        comment_form = CommentForm(data=request.POST, instance=comment)
+
+        if comment_form.is_valid() and comment.author == request.user:
+            comment = comment_form.save(commit=False)
+            comment.recipe = recipe
+            comment.save()
+
+            messages.add_message(request, message.SUCCESS, 'Comment Updated!')
+        else:
+            messages.add_message(request, messages.ERROR, 'Error updating Comment!')
+    return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
+
