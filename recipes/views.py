@@ -107,13 +107,15 @@ def recipe_upload(request):
             recipe.slug = slugify(recipe.recipe_name)
             recipe.save()
             recipe_form.save_m2m()
+            
             messages.add_message(
-                request, messages.success,
-                'Your Recipe has been submitted for approval'
+                request, messages.SUCCESS,
+                "Your Recipe has been submitted for approval"
             )
+            
 
     recipe_form = RecipeForm()
-    print(recipe_form)    
+    #print(recipe_form)    
 
     return render(
         request,
