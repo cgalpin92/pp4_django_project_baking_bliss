@@ -5,10 +5,13 @@ from .models import About
 
 def about_baking_bliss(request):
 
-    about = About.objects.all()
+    about = About.objects.all().order_by('-updated_on').first()
 
     return render(
         request,
         "about/about.html",
-        {"about": about},
+        {
+            "about": about,
+        }
+        
     )
