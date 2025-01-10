@@ -134,15 +134,31 @@ def comment_edit(request, slug, comment_id):
         queryset = Recipe.objects.filter(status=1)
         recipe = get_object_or_404(queryset, slug=slug)
         comment = get_object_or_404(Comment, pk=comment_id)
-        comment_form = CommentForm(data=request.POST, instance=comment)
 
+        comment_form = CommentForm(data=request.POST, instance=comment)
         if comment_form.is_valid() and comment.author == request.user:
             comment = comment_form.save(commit=False)
             comment.recipe = recipe
+            comment.approved = False
             comment.save()
 
-            messages.add_message(request, message.SUCCESS, 'Comment Updated!')
+            messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
         else:
             messages.add_message(request, messages.ERROR, 'Error updating Comment!')
+    return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
+
+
+def comment_delete(request, slug, comment_id):
+
+    queryset = Recipe.objects.filter(status=1)
+    recipe = get_object_or_404(queryset, slug=slug)
+    comment = get_object_or_404(Comment, pk=comment_id)
+
+    if comment.author == request.user:
+        comment.delete()
+        messages.add_message(request, messages.SUCCESS, 'Your comment has been deleted!')
+    else:
+        messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
+    
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 

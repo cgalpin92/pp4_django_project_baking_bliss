@@ -51,13 +51,13 @@
             <!-- Displaying the comments -->
             <div class="col-lg-6">
                 <div class="card cream-color font-two" id="comments-card">
-                    <card class="title">
+                    <div class="card-title">
                         <h4 class="lilac-font" id="comments">Comments:</h4>
-                    </card>
+                    </div>
                     {% for comment in comments %}
                     <div class="card-body brown-color">
                         <h5>{{ comment.comment_title }}</h5>
-                        <p>{{ comment.body }}</p>
+                        <p id="comment{{ comment.id }}">{{ comment.body }}</p>
                         <p>author: {{ comment.author }}</p>
                         {% if comment.rating == "1/5" %}
                         <p>rating: <i class="fa-solid fa-star"></i></p>
@@ -75,6 +75,7 @@
                                 class="fa-solid fa-star"></i></p>
                         {% endif %}
                         {% if user.is_authenticated and comment.author == user %}
+                        <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
                         <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
                         {% endif %}
                     </div>
@@ -94,8 +95,7 @@
                         <form id="commentForm" method="post">
                             {{ comment_form | crispy }}
                             {% csrf_token %}
-                            <button class="btn font-two lilac-font" id="submitCommentButton"
-                                type="submit">Submit</button>
+                            <button class="btn font-two lilac-font" id="submitButton" type="submit">Submit</button>
                         </form>
                         {% else %}
                         <p>You need to be signed in leave a comment about a recipe</p>
@@ -114,9 +114,27 @@
         </div>
     </div>
 </div>
+<!-- Delete confirmation modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete Comment?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete your comment? This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="#" id="deleteConfirm" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock content %}
 
 {% block extras %}
-<script src="{% static 'js/comments.js' %}"></script>
+<script src="{% static 'js/comment.js' %}"></script>
 {% endblock %}
