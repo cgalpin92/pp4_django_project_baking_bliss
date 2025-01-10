@@ -150,7 +150,6 @@ main {
     margin-top: 8%;
 }
 
-
 /* form styles */
 
 ul {
@@ -163,6 +162,23 @@ ul {
 
 #comment-form-title {
     padding: 3%;
+}
+
+/* about app */
+
+#about-card {
+    margin-top: -10%;
+}
+
+
+#about-img {
+    padding: 14%;
+}
+
+
+#about-content {
+    margin-top: -17%;
+    padding: 7%;
 }
 
 /* footer styles */

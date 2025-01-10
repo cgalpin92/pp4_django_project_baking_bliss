@@ -2,6 +2,28 @@
 
 {% block content %}
 
-<h2>{{ about.title }}</h2>
+<div class="container-fluid">
+    <!-- Displaying the information about Baking Bliss -->
+    <div class="row">
+        <h2 class="cream-font font-two text-center">{{ about.title }}</h2>
+    </div>
+    <div class="card cream-color font-three" id="">
+        <div class="card-body">
+            <div class="container-fluid-center">
+                <div class="row" id="about-card">
+                    <img src="/static/images/baking.png" alt="" id="about-img">
+                    <div class="col" id="about-content">
+                        <p class="brown-color font-three">{{about.content|safe}}</p>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="col" id="">
+                        <p class="lilac-font font-three"> {{ about.updated_on }} </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
