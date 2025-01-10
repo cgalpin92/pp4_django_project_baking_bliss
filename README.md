@@ -2,7 +2,34 @@
 
 ## Intro
 
+- Baking Bliss is a baking recipe sharing site for baking enthusiasts. 
+
+### Roles of the site:
+  - __The site user__ can view all approved recipes without creating an account or signing into the site. However, should they wish to contribute to the site by sharing recipes of their own or comment on other people's recipes they will need to create an account and sign in.
+
+  - __The site owner__ can also accomplish the above however they also have access to the admin site where they can approve recipes uploaded by other users and comments made on recipes. From the admin site they can also ;
+    - add new categories or delete old ones
+    - add new ingredients or delete old ones
+    - add new recipes or delete old ones
+    - delete user accounts
+
 ## Models
+
+- I have used a total of 5 Models within this Project:
+  - IngredientName
+    - This model is for creating the name of the ingredient (for example Self-Raising Flour) within the database. The superuser adds this ingredient which populates through to the Ingredient model via a Foreign Key.
+
+  - Ingrendient
+    - This model has in addition to the IngredientName Foreign Key field from IngredientName model, also encompaces the unit and the measurement. Again the superuser creates this in the admin, this then filters through to the Recipe Model which the user is able to access.
+
+  - Category
+    - This model is for creating the categories that the recipes can be filtered by in Index.html.
+
+  - Recipe
+    - This model is for building the recipe. The user is able to access this model's fields by the form to upload a recipe. This model has foreign key fields to the User model and Category model. It also has a many to many field to the Ingredient model as there can be many ingredients to many recipes.
+
+  - Comment
+    - This model, which was taken from the I Think I Blog walkthrough project stores the comments made by the user about the recipe they are viewing. It has a Foreign Key field to both the User model and the Recipe Model.
 
 ## User Experience Stories
 
