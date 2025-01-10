@@ -3,9 +3,12 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from django.utils.text import slugify
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponseRedirect
 from .models import IngredientName, Ingredient, Category, Recipe, Comment, User
 from .forms import RecipeForm, CommentForm
+
 
 # Create your views here.
 # def recipe(request):
@@ -28,7 +31,10 @@ class RecipeList(generic.ListView):
 
 def recipe_by_category(request, category):
     
-    category_selected = Category.objects.get(category_name__icontains=category)
+    try:
+        category_selected = Category.objects.get(category_name__icontains=category)
+    except ObjectDoesNotExist:
+        return HttpResponseRedirect(reverse('home'))
     recipes = Recipe.objects.filter(category=category_selected)
     
     return render(
@@ -40,6 +46,7 @@ def recipe_by_category(request, category):
         
     )
 
+@login_required
 def recipe_by_author(request):
     
     user = get_object_or_404(User, username=request.user )
@@ -97,7 +104,7 @@ def recipe_detail(request, slug):
         }
     )
 
-
+@login_required
 def recipe_upload(request):
 
     if request.method == "POST":
@@ -127,6 +134,7 @@ def recipe_upload(request):
     )
 
 
+@login_required
 def comment_edit(request, slug, comment_id):
 
     if request.method == "POST":
@@ -148,6 +156,7 @@ def comment_edit(request, slug, comment_id):
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
 
+@login_required
 def comment_delete(request, slug, comment_id):
 
     queryset = Recipe.objects.filter(status=1)

@@ -17,11 +17,11 @@
                             <div class="card-title">
                                 {% if recipe.status == 1 %}
                                 <a href="{% url 'recipe_detail' recipe.slug %}" class="recipe-link">
-                                    <h3 class="card-title font-two text-center">{{recipe.recipe_name}}</h3>
+                                    <h3 class="card-title font-two text-center">{{recipe.recipe_name|title}}</h3>
                                 </a>
                                 {% elif recipe.status == 0 %}
                                 <a href="#">
-                                    <h3 class="font-two text-center">{{recipe.recipe_name}}</h3>
+                                    <h3 class="font-two text-center">{{recipe.recipe_name|title}}</h3>
                                 </a>
                                 {% endif %}
                             </div>

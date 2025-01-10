@@ -72,7 +72,6 @@ class Recipe(models.Model):
     slug = models.SlugField(max_length=100, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="recipe_post")
     ingredients = models.ManyToManyField(Ingredient)
-    #ingredients = models.TextField()
     other_ingredients = models.TextField(null=True, blank=True)
     equipment = models.TextField()
     method = models.TextField()
