@@ -6,6 +6,7 @@
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
 {% url 'recipe_upload' as recipe_upload_url %}
+{% url 'users_recipe' as my_recipes_url %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +25,7 @@
 <body class="d-flex main-color">
     <!-- Header -->
     <header class="cream-color">
+        <!-- Navbar menu -->
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <div>
@@ -71,12 +73,12 @@
                                     {% endif %}
                                 </ul>
                             </li>
-
                         </ul>
                     </div>
                 </div>
             </div>
         </nav>
+        <!-- Website Name -->
         <nav class="margin-left">
             <div class="container">
                 <h1 class="brown-color font-one text-uppercase">Baking Bliss</h1>
@@ -89,7 +91,7 @@
     <!-- Main Content -->
     <main>
 
-        <!-- displaying Django messages -->
+        <!-- Django messages -->
         <nav>
             <div class="container">
                 <div class="row">
@@ -129,7 +131,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
 
-    <!-- script for running edit and delete buttons -->
+    <!-- script for running comment edit and delete buttons -->
     {% block extras %}
 
     {% endblock %}

@@ -4,7 +4,10 @@
 <div class="container-fluid">
     <div class="row">
 
-        <!-- List of recipes by category selected -->
+        <!-- List of recipes by category selected in index.html -->
+        <!-- if the recipe is awaiting approval then there is no href link,
+        the font is greyed out and the Category, Difficulty and Author 
+        details are removed -->
         <h2 class="cream-font font-two text-center p-2">Recipes</h2>
         <a href="{% url 'recipes' %}"><button type="button" class="btn btn-one-position font-two lilac-font">All
                 Recipes</button></a>
@@ -13,23 +16,27 @@
                 {% for recipe in recipes %}
                 <div class="col-md-4 col-lg-3">
                     <div class="card mb-5 cream-color">
-                        <div class="card-body">
-                            <div class="card-title">
+                        <div class="card-body recipe-card d-flex flex-column justify-content-evenly">
+                            <div class="card-title font-two text-center">
                                 {% if recipe.status == 1 %}
                                 <a href="{% url 'recipe_detail' recipe.slug %}" class="recipe-link">
-                                    <h3 class="card-title font-two text-center">{{recipe.recipe_name}}</h3>
+                                    <h3 class="card-title">{{recipe.recipe_name}}</h3>
                                 </a>
                                 {% elif recipe.status == 0 %}
                                 <a href="#">
-                                    <h3 class="font-two text-center">{{recipe.recipe_name}}</h3>
+                                    <h3 class="grey-font">{{recipe.recipe_name}}</h3>
                                 </a>
                                 {% endif %}
                             </div>
-                            <div class="card-text">
-                                <p class="font-two smaller-text lilac-font">Category: {{recipe.category}}</p>
-                                <p class="font-two smaller-text lilac-font">Author: {{recipe.author}}</p>
-                                <p class="font-two smaller-text brown-color">{% if recipe.status == 0%}Awaiting
-                                    approval{% endif %}</p>
+                            <div class="card-text d-flex flex-column align-items-center font-two smaller-text">
+                                {% if recipe.status == 0%}
+                                <p class="brown-color mb-2">Awaiting
+                                    approval</p>
+                                {% else %}
+                                <p class="lilac-font mb-2">Category: {{recipe.category}}</p>
+                                <p class="lilac-font mb-2">Difficulty: {{recipe.difficulty}}</p>
+                                <p class="lilac-font mb-2">Author: {{recipe.author}}</p>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -39,8 +46,9 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">
-            <button onclick="window.history.back();" type="button" class="btn font-two lilac-font">Back</button>
+        <div class="col d-flex justify-content-center">
+            <button onclick="window.history.back();" type="button"
+                class="btn font-two lilac-font font-size">Back</button>
         </div>
     </div>
 </div>
