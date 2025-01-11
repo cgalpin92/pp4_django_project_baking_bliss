@@ -37,6 +37,8 @@ a {
     color: #7B573E;
 }
 
+.grey-color {}
+
 /* Header Styles */
 
 header {
@@ -114,8 +116,8 @@ main {
 }
 
 .btn-one-position {
-    margin-left: 79%;
-    margin-top: -50%;
+    margin-left: 40%;
+    margin-top: -7%;
     padding: 1%;
 }
 
@@ -123,11 +125,13 @@ main {
     color: #701d0d;
 }
 
+
 .card-title:hover {
     color: #701d0d;
 }
 
-#recipe-card {
+
+#recipe {
     font-size: smaller;
 }
 
@@ -201,7 +205,8 @@ footer {
     }
 
     .btn-one-position {
-        margin-top: -67%;
+        margin-top: -10%;
+        margin-left: 39%;
     }
 
     #message-alignment {
@@ -230,8 +235,8 @@ footer {
     }
 
     .btn-one-position {
-        margin-left: 87%;
-        margin-top: -22%;
+        margin-left: 86%;
+        margin-top: -12%;
         font-size: 85%;
     }
 
@@ -239,7 +244,11 @@ footer {
         font-size: 140%;
     }
 
-    #recipe-card {
+    .recipe-card {
+        height: 230px;
+    }
+
+    #recipe {
         font-size: 100%;
     }
 
