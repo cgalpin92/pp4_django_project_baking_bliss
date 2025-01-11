@@ -29,11 +29,14 @@
                                 {% endif %}
                             </div>
                             <div class="card-text d-flex flex-column align-items-center font-two smaller-text">
+                                {% if recipe.status == 0%}
+                                <p class="brown-color mb-2">Awaiting
+                                    approval</p>
+                                {% else %}
                                 <p class="lilac-font mb-2">Category: {{recipe.category}}</p>
                                 <p class="lilac-font mb-2">Difficulty: {{recipe.difficulty}}</p>
                                 <p class="lilac-font mb-2">Author: {{recipe.author}}</p>
-                                <p class="brown-color mb-2">{% if recipe.status == 0%}Awaiting
-                                    approval{% endif %}</p>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -44,8 +47,9 @@
         </div>
         <div class="row">
             <div>
-                <div class="col">
-                    <button onclick="window.history.back();" type="button" class="btn font-two lilac-font">Back</button>
+                <div class="col d-flex justify-content-center">
+                    <button onclick="window.history.back();" type="button"
+                        class="btn font-two lilac-font font-size">Back</button>
                 </div>
             </div>
         </div>

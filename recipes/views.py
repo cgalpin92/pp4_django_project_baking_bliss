@@ -50,7 +50,7 @@ def recipe_by_category(request, category):
 def recipe_by_author(request):
     
     user = get_object_or_404(User, username=request.user )
-    profile = Recipe.objects.filter(author=user)
+    profile = Recipe.objects.filter(author=user).order_by('-created_on')
 
     return render(
         request,

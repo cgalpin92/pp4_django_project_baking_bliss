@@ -8,6 +8,7 @@ class RecipeAdmin(SummernoteModelAdmin):
     search_fields = ['category']
     list_filter = ('difficulty','status')
     prepopulated_fields = {'slug': ('recipe_name',)}
+    ordering = ['status']
 
 @admin.register(Ingredient)
 class IngredientAdmin(SummernoteModelAdmin):
@@ -15,7 +16,13 @@ class IngredientAdmin(SummernoteModelAdmin):
     ordering = ('ingredient_name',)
     list_filter = ('ingredient_name',)
 
+@admin.register(Comment)
+class CommentAdmin(SummernoteModelAdmin):
+    list_display = ('comment_title', 'recipe', 'author', 'approved')
+    list_filter = ['rating']
+    ordering = ['approved']
+
 # Register your models here.
 admin.site.register(IngredientName)
 admin.site.register(Category)
-admin.site.register(Comment)
+#admin.site.register(Comment)
