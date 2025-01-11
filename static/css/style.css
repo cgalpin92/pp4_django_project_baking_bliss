@@ -29,6 +29,8 @@ a {
     font-family: 'Playfair Display', sans-serif;
 }
 
+
+
 .cream-color {
     background-color: #FCEFE6;
 }
@@ -222,6 +224,10 @@ footer {
     #message-alignment {
         font-size: 60%;
     }
+
+    .font-size {
+        font-size: small;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -276,6 +282,10 @@ footer {
         padding-bottom: 3%;
         padding-left: 42%;
 
+    }
+
+    .font-size {
+        font-size: large;
     }
 
     #method {

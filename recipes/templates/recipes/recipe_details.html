@@ -136,11 +136,13 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">
-            <button onclick="window.history.back();" type="button" class="btn font-two lilac-font">Back</button>
+        <div class="col d-flex justify-content-end p-2">
+            <button onclick="window.history.back();" type="button"
+                class="btn font-two lilac-font font-size">Back</button>
         </div>
-        <div class="col">
-            <a href="{% url 'recipes' %}"><button type="button" class="btn font-two lilac-font">All Recipes</button></a>
+        <div class="col d-flex justify-content-start p-2">
+            <a href="{% url 'recipes' %}"><button type="button" class="btn font-two lilac-font font-size">All
+                    Recipes</button></a>
         </div>
     </div>
 </div>
