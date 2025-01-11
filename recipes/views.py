@@ -89,6 +89,9 @@ def recipe_detail(request, slug):
             comment.author = request.user 
             comment.recipe = recipe
             comment.save()
+            messages.add_message(
+                request, messages.SUCCESS, "Your comment has been submitted for approval, you can still edit or delete it below"
+            )
 
     comment_form = CommentForm()
         
