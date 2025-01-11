@@ -37,7 +37,9 @@ a {
     color: #7B573E;
 }
 
-.grey-color {}
+.grey-font {
+    color: #D3D3D3;
+}
 
 /* Header Styles */
 
@@ -123,6 +125,10 @@ main {
 
 .btn:hover {
     color: #701d0d;
+}
+
+.recipe-card {
+    height: 150px;
 }
 
 
@@ -245,6 +251,10 @@ footer {
     }
 
     .recipe-card {
+        height: 230px;
+    }
+
+    .category-card {
         height: 230px;
     }
 
