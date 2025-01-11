@@ -7,6 +7,8 @@
 <div class="containter-fluid">
     <div class="row">
         <h2 class="cream-font font-two text-center p-2"> Upload a Recipe</h2>
+        <a href="{% url 'recipes' %}"><button type="button" class="btn btn-one-position font-two lilac-font">All
+                Recipes</button></a>
         <div class="col card font-two cream-color brown-color">
             <div class="card-body">
                 {% if user.is_authenticated %}
