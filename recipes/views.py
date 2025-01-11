@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404, reverse
 # from django.http import HttpResponse
 from django.views import generic
-from django.views.generic import UpdateView
 from django.utils.text import slugify
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -13,22 +12,27 @@ from .forms import RecipeForm, CommentForm
 
 # Create your views here.
 
+"""
+This class based view lists all the Categories and displays them in Index.html
+"""
+
 class CategoryList(generic.ListView):
     queryset = Category.objects.all()
     template_name = "recipes/index.html"
 
+"""
+This class based view lists all the Recipes, ordering them by newest recipe first
+and displays them in recipe_list.html
+"""
 class RecipeList(generic.ListView):
     queryset = Recipe.objects.all().order_by('-created_on')
     template_name = "recipes/recipe_list.html"
 
 """
-class UpdateRecipe(UpdateView):
-    model = Recipe.objects.all()
-    form_class = RecipeForm
-    template_name = 'recipes/recipe_edit.html'
- """   
-
-
+This function based view lists all the Recipes under specific categories.
+It identifies the category name selected in Index.html and filters the Recipe
+Model by that category
+"""
 def recipe_by_category(request, category):
     
     try:
@@ -46,7 +50,12 @@ def recipe_by_category(request, category):
         
     )
 
-
+"""
+This function based view lists all the Recipes the user signed into Baking Bliss.
+The @login_required decorator at the start ensures that only users logged in can 
+access this associated URL, if the are not then they are re-directed to the login
+page. Once logged in they will be automatically returned to the recipe_user.html page
+"""
 @login_required
 def recipe_by_author(request):
     
@@ -62,7 +71,15 @@ def recipe_by_author(request):
         }
     )
 
-
+"""
+This function based view is the recipe details page.
+It filters the Recipe model by only approved recipes
+The function also fetches all the Ingredients objects
+so that they can be looped through in the page the Ingredient
+model has a many to many relationship with the Recipe Model.
+The comment form is created below and displayed within the Recipe
+Details view
+"""
 def recipe_detail(request, slug):
     
     queryset = Recipe.objects.filter(status=1)
@@ -94,6 +111,17 @@ def recipe_detail(request, slug):
         }
     )
 
+"""
+This function based view is the Recipe Upload form.
+It connected to the RecipeForm class in forms.py
+It will save the information provided to the server once all the information
+has been added. A message will then display to the user confirming that the recipe
+has been sent and in approval stage.
+
+The @login_required decorator at the start ensures that only users logged in can 
+access this associated URL, if the are not then they are re-directed to the login
+page. Once logged in they will be automatically returned to the recipe_upload.html page
+"""
 @login_required
 def recipe_upload(request):
 
@@ -112,8 +140,7 @@ def recipe_upload(request):
             )
             
 
-    recipe_form = RecipeForm()
-    #print(recipe_form)    
+    recipe_form = RecipeForm()   
 
     return render(
         request,
@@ -123,7 +150,14 @@ def recipe_upload(request):
         }
     )
 
-
+"""
+This function based view lists allows users to edit their own comments.
+A message will then display to the user confirming that the comment has 
+been updated if successfull or stating an Error if not.
+The @login_required decorator at the start ensures that only users logged in can 
+access this associated URL, if the are not then they are re-directed to the login
+page. Once logged in they will be automatically returned to the recipe_details.html page
+"""
 @login_required
 def comment_edit(request, slug, comment_id):
 
@@ -145,7 +179,14 @@ def comment_edit(request, slug, comment_id):
             messages.add_message(request, messages.ERROR, 'Error updating Comment!')
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
-
+"""
+This function based view lists allows users to delete their own comments.
+A message will then display to the user confirming that the comment has 
+been deleted if successfull or stating an Error if not.
+The @login_required decorator at the start ensures that only users logged in can 
+access this associated URL, if the are not then they are re-directed to the login
+page. Once logged in they will be automatically returned to the recipe_details.html page
+"""
 @login_required
 def comment_delete(request, slug, comment_id):
 

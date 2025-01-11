@@ -13,10 +13,6 @@ a {
     color: #F58871;
 }
 
-/*a:hover {
-    color: #701d0d;
-}*/
-
 .font-one {
     font-family: 'Outfit', sans-serif;
 }
@@ -28,8 +24,6 @@ a {
 .font-three {
     font-family: 'Playfair Display', sans-serif;
 }
-
-
 
 .cream-color {
     background-color: #FCEFE6;
@@ -43,6 +37,22 @@ a {
     color: #D3D3D3;
 }
 
+.blush-color {
+    color: #FFD3C5;
+}
+
+.blush-background {
+    background-color: #FFD3C5
+}
+
+.cream-font {
+    color: #FCEFE6;
+}
+
+.lilac-font {
+    color: #6B80F3;
+}
+
 .faded {
     color: rgb(172, 175, 175);
 }
@@ -52,14 +62,6 @@ a {
 header {
     display: flex;
     justify-content: space-between;
-
-
-}
-
-#background-image {
-    background-image: url(../images/baking_ingredients.jpg);
-    opacity: 0.2;
-    width: 100%;
 }
 
 h1 {
@@ -77,7 +79,6 @@ li.nav-item:hover {
     color: #701d0d;
 }
 
-
 .dropdown-font {
     color: #F58871;
 }
@@ -94,22 +95,6 @@ main {
 
 .main-color {
     background-color: #F58871;
-}
-
-.blush-color {
-    color: #FFD3C5;
-}
-
-.blush-background {
-    background-color: #FFD3C5
-}
-
-.cream-font {
-    color: #FCEFE6;
-}
-
-.lilac-font {
-    color: #6B80F3;
 }
 
 .smaller-text {
@@ -131,6 +116,11 @@ main {
 
 .btn:hover {
     color: #701d0d;
+}
+
+.btn-close {
+    margin-right: 44%;
+    margin-top: 8%;
 }
 
 .recipe-card {
@@ -165,10 +155,6 @@ main {
     font-size: smaller;
 }
 
-.btn-close {
-    margin-right: 44%;
-    margin-top: 8%;
-}
 
 /* form styles */
 
@@ -207,6 +193,7 @@ footer {
     margin-top: auto;
 }
 
+/* responsive styling for screens 374px and below */
 @media screen and (max-width: 374px) {
 
     h1 {
@@ -224,17 +211,16 @@ footer {
         margin-left: 39%;
     }
 
-    #message-alignment {
-        font-size: 60%;
-    }
-
     .font-size {
         font-size: small;
     }
 
-
+    #message-alignment {
+        font-size: 60%;
+    }
 }
 
+/* responsive styling for screens 768px and above */
 @media screen and (min-width: 768px) {
     h1 {
         font-size: 400%;
@@ -261,8 +247,9 @@ footer {
         font-size: 85%;
     }
 
-    #username-font {
-        font-size: 140%;
+    .btn-close {
+        margin-right: 48%;
+        margin-top: 5%;
     }
 
     .recipe-card {
@@ -271,10 +258,6 @@ footer {
 
     .category-card {
         height: 230px;
-    }
-
-    #recipe {
-        font-size: 100%;
     }
 
     .margins {
@@ -286,11 +269,14 @@ footer {
         padding-top: 3%;
         padding-bottom: 3%;
         padding-left: 42%;
-
     }
 
     .font-size {
         font-size: large;
+    }
+
+    #username-font {
+        font-size: 140%;
     }
 
     #method {
@@ -305,15 +291,12 @@ footer {
         font-size: 100%;
     }
 
-    .btn-close {
-        margin-right: 48%;
-        margin-top: 5%;
+    #recipe {
+        font-size: 100%;
     }
-
-
 }
 
-
+/* responsive styling for screens 992px and above */
 @media screen and (min-width: 992px) {
 
     header {
@@ -347,14 +330,6 @@ footer {
         margin-left: 214%;
     }
 
-    #nav-item-one {
-        margin-left: 40%;
-    }
-
-    #nav-item-two {
-        margin-left: 223%;
-    }
-
     .nav-item-four {
         margin-left: 588%;
     }
@@ -364,25 +339,9 @@ footer {
         margin-left: 85%;
     }
 
-    #username-font {
-        font-size: 170%;
-    }
-
     .margins {
         margin-top: 5%;
         margin-left: 7%;
-    }
-
-    #ingredients {
-        padding-left: 10%;
-    }
-
-    #equipment {
-        padding-left: 5%;
-    }
-
-    #method {
-        margin: 7%;
     }
 
     .padding {
@@ -398,8 +357,33 @@ footer {
         margin-top: -11%;
         font-size: 125%;
     }
+
+    #nav-item-one {
+        margin-left: 40%;
+    }
+
+    #nav-item-two {
+        margin-left: 223%;
+    }
+
+    #ingredients {
+        padding-left: 10%;
+    }
+
+    #equipment {
+        padding-left: 5%;
+    }
+
+    #method {
+        margin: 7%;
+    }
+
+    #username-font {
+        font-size: 170%;
+    }
 }
 
+/* responsive styling for screens 1200px and above */
 @media screen and (min-width: 1200px) {
 
     .navbar-expand-lg .navbar-nav {
@@ -408,6 +392,14 @@ footer {
 
     .btn-one-position {
         font-size: 169%;
+    }
+
+    .category-card {
+        height: 290px;
+    }
+
+    .card-title {
+        font-size: larger;
     }
 
     #username-font {
@@ -419,16 +411,9 @@ footer {
     #message-alignment {
         font-size: 170%;
     }
-
-    .category-card {
-        height: 290px;
-    }
-
-    .card-title {
-        font-size: larger;
-    }
 }
 
+/* responsive styling for screens 768px and above */
 @media screen and (min-width: 1400px) {
 
     .category-card {
