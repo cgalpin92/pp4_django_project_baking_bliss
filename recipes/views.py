@@ -174,3 +174,18 @@ def comment_delete(request, slug, comment_id):
     
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
+
+@login_required
+def recipe_delete(request, slug, recipe_id):
+
+    queryset = Recipe.objects.filter(status=1)
+    recipe = get_object_or_404(queryset, slug=slug)
+
+    if recipe.author == request.user:
+        recipe.delete()
+        messages.add_message(request, messages.SUCCESS, 'Your Recipe has been deleted!')
+    else:
+        messages.add_message(request, messages.ERROR, 'You can only delete your own Recipe!')
+    
+    return HttpResponseRedirect('recipe_user')
+
