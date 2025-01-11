@@ -25,7 +25,7 @@ class CategoryList(generic.ListView):
     template_name = "recipes/index.html"
 
 class RecipeList(generic.ListView):
-    queryset = Recipe.objects.all()
+    queryset = Recipe.objects.all().order_by('-created_on')
     template_name = "recipes/recipe_list.html"
 
 
