@@ -36,6 +36,7 @@
                                 <p class="lilac-font mb-2">Category: {{recipe.category}}</p>
                                 <p class="lilac-font mb-2">Difficulty: {{recipe.difficulty}}</p>
                                 <p class="lilac-font mb-2">Author: {{recipe.author}}</p>
+                                <a href="{% url 'recipe_edit' recipe.slug %}"><button>Edit Recipe</button></a>
                                 {% endif %}
                             </div>
                         </div>

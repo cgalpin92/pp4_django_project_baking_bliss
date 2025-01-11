@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 # from django.http import HttpResponse
 from django.views import generic
+from django.views.generic import UpdateView
 from django.utils.text import slugify
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -11,14 +12,6 @@ from .forms import RecipeForm, CommentForm
 
 
 # Create your views here.
-# def recipe(request):
-#     return HttpResponse("The recipe page works!")
-
-
-
-# class RecipeList(generic.ListView):
-#     queryset = Recipe.objects.all()
-#     template_name = "recipes/index.html"
 
 class CategoryList(generic.ListView):
     queryset = Category.objects.all()
@@ -27,6 +20,13 @@ class CategoryList(generic.ListView):
 class RecipeList(generic.ListView):
     queryset = Recipe.objects.all().order_by('-created_on')
     template_name = "recipes/recipe_list.html"
+
+"""
+class UpdateRecipe(UpdateView):
+    model = Recipe.objects.all()
+    form_class = RecipeForm
+    template_name = 'recipes/recipe_edit.html'
+ """   
 
 
 def recipe_by_category(request, category):
@@ -46,6 +46,7 @@ def recipe_by_category(request, category):
         
     )
 
+
 @login_required
 def recipe_by_author(request):
     
@@ -61,20 +62,6 @@ def recipe_by_author(request):
         }
     )
 
-
-
-"""
-def recipe_list(request):
-    recipe_list = Recipe.objects.all()
-
-    return render(
-        request,
-        "recipes/index.html",
-        {
-            "recipe_list": recipe_list
-        }
-    )
-"""
 
 def recipe_detail(request, slug):
     
@@ -176,16 +163,30 @@ def comment_delete(request, slug, comment_id):
 
 
 @login_required
-def recipe_delete(request, slug, recipe_id):
+def recipe_edit(request, slug):
 
-    queryset = Recipe.objects.filter(status=1)
+    queryset = Recipe.objects.all()
     recipe = get_object_or_404(queryset, slug=slug)
 
-    if recipe.author == request.user:
-        recipe.delete()
-        messages.add_message(request, messages.SUCCESS, 'Your Recipe has been deleted!')
-    else:
-        messages.add_message(request, messages.ERROR, 'You can only delete your own Recipe!')
+    recipe_form = RecipeForm(data=request.POST, instance=slug)
+    if recipe_form.is_valid() and recipe.author == request.user:
+        recipe = recipe_form.save(commit=False)
+        recipe.author = request.user
+        recipe.slug = slugify(recipe.recipe_name)
+        recipe.save()
+        recipe_form.save_m2m()
+
+
+        messages.add_message(request, messages.SUCCESS, 'Your Recipe has been updated!')
+       
+        return HttpResponseRedirect('recipe_user')
     
-    return HttpResponseRedirect('recipe_user')
+    return render (
+        request,
+        "recipes/recipe_edit.html",
+        {
+            "recipe_form": recipe_form
+        }
+    )
+
 
