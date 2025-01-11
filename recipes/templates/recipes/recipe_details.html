@@ -55,6 +55,35 @@
                         <h4 class="lilac-font" id="comments">Comments:</h4>
                     </div>
                     {% for comment in comments %}
+                    {% if not comment.approved and comment.author == user %}
+                    <div class="card-body grey-font">
+                        <h5>{{ comment.comment_title }}</h5>
+                        <p id="comment{{ comment.id }}">{{ comment.body }}</p>
+                        <p>author: {{ comment.author }}</p>
+                        {% if comment.rating == "1/5" %}
+                        <p>rating: <i class="fa-solid fa-star"></i></p>
+                        {% elif comment.rating == "2/5" %}
+                        <p>rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+                        {% elif comment.rating == "3/5" %}
+                        <p>rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i></p>
+                        {% elif comment.rating == "4/5" %}
+                        <p>rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+                        {% elif comment.rating == "5/5" %}
+                        <p>rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i></p>
+                        {% endif %}
+                        <p>Awaiting approval</p>
+                        {% if user.is_authenticated and comment.author == user %}
+                        <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
+                        <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
+                        {% endif %}
+                    </div>
+                    {% elif not comment.approved %}
+                    <div class="d-none"></div>
+                    {% else %}
                     <div class="card-body brown-color">
                         <h5>{{ comment.comment_title }}</h5>
                         <p id="comment{{ comment.id }}">{{ comment.body }}</p>
@@ -74,11 +103,12 @@
                                 class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                                 class="fa-solid fa-star"></i></p>
                         {% endif %}
-                        {% if user.is_authenticated and comment.author == user %}
+                        {% if user.is_authenticated and comment.author == user.username %}
                         <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
                         <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
                         {% endif %}
                     </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>

@@ -41,6 +41,10 @@ a {
     color: #D3D3D3;
 }
 
+.faded {
+    color: rgb(172, 175, 175);
+}
+
 /* Header Styles */
 
 header {
