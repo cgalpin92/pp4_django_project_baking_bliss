@@ -414,4 +414,15 @@ footer {
     #message-alignment {
         font-size: 170%;
     }
+
+    .category-card {
+        height: 290px;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+
+    .category-card {
+        height: 330px;
+    }
 }

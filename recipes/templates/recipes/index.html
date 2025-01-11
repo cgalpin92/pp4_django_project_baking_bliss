@@ -29,9 +29,9 @@
                         {% else %}
                         <img class="category-image" src="/static/images/baking.png" alt="">
                         {% endif %}
-                        <div class="card-body">
+                        <div class="card-body d-flex justify-content-center align-items-center">
                             <a href="{% url 'recipe_category' category.category_name %}">
-                                <h3 class="card-title font-two text-center">{{category.category_name}}</h2>
+                                <h3 class="card-title font-two">{{category.category_name}}</h2>
                             </a>
                         </div>
                     </div>
