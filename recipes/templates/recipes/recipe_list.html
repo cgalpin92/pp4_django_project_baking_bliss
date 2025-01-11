@@ -13,7 +13,7 @@
             {% for recipe in object_list %}
             <div class=" card-deck col-md-4 col-lg-3">
                 <div class="card mb-5 cream-color">
-                    <div class="card-body recipe-card">
+                    <div class="card-body recipe-card d-flex flex-column justify-content-evenly">
                         <div class="card-title">
                             {% if recipe.status == 1 %}
                             <a href="{% url 'recipe_detail' recipe.slug %}" class="recipe-link">
@@ -25,13 +25,14 @@
                             </a>
                             {% endif %}
                         </div>
-                        <div class="card-text">
+                        <div class="card-text d-flex flex-column align-items-center font-two smaller-text">
                             {% if recipe.status == 0%}
-                            <p class="font-two smaller-text brown-color">Awaiting
+                            <p class="brown-color mb-2">Awaiting
                                 approval</p>
                             {% else %}
-                            <p class="font-two smaller-text lilac-font">Category: {{recipe.category}}</p>
-                            <p class="font-two smaller-text lilac-font">Author: {{recipe.author}}</p>
+                            <p class="lilac-font mb-2">Category: {{recipe.category}}</p>
+                            <p class="lilac-font mb-2">Difficulty: {{recipe.difficulty}}</p>
+                            <p class="lilac-font mb-2">Author: {{recipe.author}}</p>
                             {% endif %}
                         </div>
                     </div>

@@ -137,6 +137,9 @@ main {
     height: 150px;
 }
 
+.card-title {
+    font-size: large;
+}
 
 .card-title:hover {
     color: #701d0d;
@@ -228,6 +231,8 @@ footer {
     .font-size {
         font-size: small;
     }
+
+
 }
 
 @media screen and (min-width: 768px) {
@@ -417,6 +422,10 @@ footer {
 
     .category-card {
         height: 290px;
+    }
+
+    .card-title {
+        font-size: larger;
     }
 }
 
