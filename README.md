@@ -111,6 +111,65 @@
 
 ## Deployment
 
+### Forking:
+By forking the GitHub Repository we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original repository by using the following steps:
+
+1. Log in to GitHub and locate this [GitHub Repository](https://github.com/cgalpin92/pp4_django_project_baking_bliss)
+2. At the top of the Repository just above the "Settings" Button on the menu, locate the "Fork" Button.
+3. You should now have a copy of the original repository in your GitHub account.
+
+### Cloning:
+1. Log in to GitHub and locate this [GitHub Repository](https://github.com/cgalpin92/pp4_django_project_baking_bliss)
+2. Under the repository name, click "Clone or download".
+3. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
+4. Open Git Bash
+5. Change the current working directory to the location where you want the cloned directory to be made.
+6. Type `git clone`, and then paste the URL you copied in Step 3.
+
+```
+$ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+```
+
+7. Press Enter. Your local clone will be created.
+
+```
+$ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+> Cloning into `CI-Clone`...
+> remote: Counting objects: 10, done.
+> remote: Compressing objects: 100% (8/8), done.
+> remove: Total 10 (delta 1), reused 10 (delta 1)
+> Unpacking objects: 100% (10/10), done.
+```
+
+For further information and a more detailed explaination, click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop)
+
+
+### Heroku
+This project was deployed using Heroku.
+
+- __Steps for deployment:__
+    - Fork or clone this repository
+    - Create a new Heroku app
+        - Login to Heroku and select __Create New App__
+        - Create app name
+        - Select your __region__
+        - Select __Create App__
+    - Change Heroku Settings
+        - Select __Settings__
+        - Scroll down to __Config Var__ section and select __reveal config var__
+        - Enter the following information into the __Key__ and __value__ inputs:
+            - __Key:__ COLLECT_STATIC_FILES
+            - __Value:__ 1
+        - Select __Add__    
+    - Link the Heroku app to the repository:
+        - Select __Deploy__ from the top of the page.
+        - Scroll down to __Deployment method__
+        - Select __GitHub. Connect to GitHub__
+        - Enter your repository name and click search
+        - Select connect next to your repository name
+    - Click on __Deploy__
+
+
 ## Credits
 
 ### Code
