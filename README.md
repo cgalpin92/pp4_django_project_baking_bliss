@@ -5,13 +5,15 @@
 - Baking Bliss is a recipe sharing platform for baking enthusiasts to share their favourite recipes, discover new ones and connect with other fellow bakers. 
 
   ### Roles of the site:
-    - __The site user__ can discover new recipes without creating an account or signing into the site. However, in order to contribute to the site by sharing their own recipes oor commenting on other recipes and connecting with other bakers they will need to create an account and sign in.
+    - __The site user__ can discover new recipes without creating an account or signing into the site. However, in order to contribute to the site by sharing their own recipes or commenting on other recipes and connecting with other bakers they will need to create an account and sign in.
 
-    - __The site owner__ can also accomplish the above however they also have access to the admin site where they can approve recipes uploaded by other users and comments made on recipes. From the admin site they can also;
-      - add new categories or delete old ones
-      - add new ingredients or delete old ones
-      - add new recipes or delete old ones
-      - delete user accounts
+    - __The site owner__ can also accomplish the above however they also have access to the admin site where they can approve recipes and comments uploaded by other users. From the admin site they can also;
+      - Add new categories or delete old ones
+      - Add new ingredients or delete old ones
+      - Add new recipes or delete old ones
+      - Add new comments or delete old ones
+      - Create and Delete user accounts
+      - Update the About page information
 
 ## Models
 
@@ -53,9 +55,50 @@
 
 ### Features left to Implement
 
+## Technologies Used
+
+### Languages Used:
+
+  - HTML5
+  - CSS3
+  - Python
+  - Javascript
+
+### Frameworks, Libraries and Programs Used:
+
+  - __Django__ 
+      - The Djang python framework was used to build Baking Bliss website.
+
+  - __Bootstrap__ 
+      - The Bootstrap framework was used in the project to assist with the website's styling and responsiveness.
+
+  - __Crispy Forms__ 
+      - The Crispy Forms package was used within the project to render the recipe upload and comment forms.
+
+  - __Django Summernote__
+      - The django summernote package was used to allow formatting and styling within the admin site and recipe upload form.
+  
+  - __Django All Auth__
+      - The All Auth package was used to provide authorisation to the Baking Bliss site so that the project could have role based functionality.
+  
+  - __Whitenoise__
+      - The Whitenoise library was used within the project for serving static files due to Django not having a built in function for this whilst in Production (DEBUG set to False).
+
+  - __Balsamiq wireframes__
+      - The Balsamiq wireframes programm was used in the front end design of the site to map out how each page would appear on different screen sizes.
+
+  - __Google Fonts__
+      - Google fonts was used to import the fonts used within the project. These fonts were Outfit, Comfortaa and Playfair Display.
+
+  - __Font Awesome__
+      - Font awesome was used to add icons for aesthetic and UX purposes.
+
+
 ## Testing
 
 ### Manual Testing
+
+
 
 ### Validator Testing
 
