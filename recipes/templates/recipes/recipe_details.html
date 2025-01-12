@@ -6,8 +6,7 @@
 {% block content %}
 
 <div class="container-fluid">
-    <!-- Recipe Section -->
-    <!-- Displaying the recipe details -->
+    <!-- Recipe Section displaying the recipe details -->
     <div class="row">
         <h2 class="cream-font font-two text-center">{{ recipe.recipe_name }}</h2>
     </div>
@@ -151,8 +150,10 @@
         </div>
     </div>
 </div>
-<!-- Delete confirmation modal for when user deletes a comment-->
-<!-- Checks that the user would like to delete the comment -->
+
+
+<!-- Delete confirmation modal for when user deletes a comment
+to check that the user would like to delete the comment -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content cream-color font-two brown-color">

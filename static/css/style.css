@@ -124,7 +124,7 @@ main {
 }
 
 .recipe-card {
-    height: 150px;
+    height: 180px;
 }
 
 .card-title {
@@ -161,6 +161,7 @@ main {
 ul {
     list-style-type: none;
 }
+
 
 #comment-form {
     padding-top: 7%;
