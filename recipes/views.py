@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_object_or_404, reverse
-# from django.http import HttpResponse
 from django.views import generic
 from django.utils.text import slugify
 from django.contrib import messages
@@ -13,7 +12,7 @@ from .forms import RecipeForm, CommentForm
 # Create your views here.
 
 """
-This class based view lists all the Categories and displays them in Index.html
+This class view lists all the Categories and displays them in Index.html
 """
 
 class CategoryList(generic.ListView):
@@ -21,7 +20,7 @@ class CategoryList(generic.ListView):
     template_name = "recipes/index.html"
 
 """
-This class based view lists all the Recipes, ordering them by newest recipe first
+This class view lists all the Recipes, ordering them by newest recipe first
 and displays them in recipe_list.html
 """
 class RecipeList(generic.ListView):
@@ -29,9 +28,10 @@ class RecipeList(generic.ListView):
     template_name = "recipes/recipe_list.html"
 
 """
-This function based view lists all the Recipes under specific categories.
+This function view lists all the Recipes under specific categories.
 It identifies the category name selected in Index.html and filters the Recipe
-Model by that category
+Model by that category. It uses an exception in the case that a user enters a 
+category into the URL that does not exist in the database.
 """
 def recipe_by_category(request, category):
     
@@ -51,7 +51,7 @@ def recipe_by_category(request, category):
     )
 
 """
-This function based view lists all the Recipes the user signed into Baking Bliss.
+This function view lists all the Recipes by the user signed into Baking Bliss.
 The @login_required decorator at the start ensures that only users logged in can 
 access this associated URL, if the are not then they are re-directed to the login
 page. Once logged in they will be automatically returned to the recipe_user.html page
@@ -72,7 +72,7 @@ def recipe_by_author(request):
     )
 
 """
-This function based view is the recipe details page.
+This function view is the recipe details page.
 It filters the Recipe model by only approved recipes
 The function also fetches all the Ingredients objects
 so that they can be looped through in the page the Ingredient
@@ -112,7 +112,7 @@ def recipe_detail(request, slug):
     )
 
 """
-This function based view is the Recipe Upload form.
+This function view is the Recipe Upload form.
 It connected to the RecipeForm class in forms.py
 It will save the information provided to the server once all the information
 has been added. A message will then display to the user confirming that the recipe
@@ -151,7 +151,7 @@ def recipe_upload(request):
     )
 
 """
-This function based view lists allows users to edit their own comments.
+This function view lists allows users to edit their own comments.
 A message will then display to the user confirming that the comment has 
 been updated if successfull or stating an Error if not.
 The @login_required decorator at the start ensures that only users logged in can 
@@ -180,7 +180,7 @@ def comment_edit(request, slug, comment_id):
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
 """
-This function based view lists allows users to delete their own comments.
+This function view allows users to delete their own comments.
 A message will then display to the user confirming that the comment has 
 been deleted if successfull or stating an Error if not.
 The @login_required decorator at the start ensures that only users logged in can 
@@ -206,21 +206,26 @@ def comment_delete(request, slug, comment_id):
 @login_required
 def recipe_edit(request, slug):
 
-    queryset = Recipe.objects.all()
-    recipe = get_object_or_404(queryset, slug=slug)
+    #queryset = Recipe.objects.all()
+    recipe = get_object_or_404(Recipe, slug=slug)
 
-    recipe_form = RecipeForm(data=request.POST, instance=slug)
-    if recipe_form.is_valid() and recipe.author == request.user:
-        recipe = recipe_form.save(commit=False)
-        recipe.author = request.user
-        recipe.slug = slugify(recipe.recipe_name)
-        recipe.save()
-        recipe_form.save_m2m()
+    if request.method == "POST":
+
+        recipe_form = RecipeForm(data=request.POST, instance=recipe)
+        if recipe_form.is_valid() and recipe.author == request.user:
+            recipe = recipe_form.save(commit=False)
+            recipe.author = request.user
+            recipe.slug = slugify(recipe.recipe_name)
+            recipe.save()
+            recipe_form.save_m2m()
 
 
-        messages.add_message(request, messages.SUCCESS, 'Your Recipe has been updated!')
+            messages.add_message(request, messages.SUCCESS, 'Your Recipe has been updated!')
        
-        return HttpResponseRedirect('recipe_user')
+            return HttpResponseRedirect('recipe_user')
+    else:
+
+        recipe_form = RecipeForm(instance=recipe)
     
     return render (
         request,

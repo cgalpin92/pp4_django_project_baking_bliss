@@ -14,7 +14,7 @@
                 {% if user.is_authenticated %}
                 <h3>Update Recipe</h3>
                 <form id="recipeForm" method="post">
-                    {{ recipe_form | crispy }}
+                    {{ recipe_form | crispy | safe }}
                     {% csrf_token %}
                     <button id="submitButton" type="submit" class="btn font-two lilac-font">Update Recipe</button>
                 </form>
