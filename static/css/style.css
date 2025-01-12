@@ -13,6 +13,10 @@ a {
     color: #F58871;
 }
 
+a:hover {
+    color: #701d0d;
+}
+
 .font-one {
     font-family: 'Outfit', sans-serif;
 }
@@ -53,6 +57,10 @@ a {
     color: #6B80F3;
 }
 
+.coral-color {
+    color: #F58871;
+}
+
 .faded {
     color: rgb(172, 175, 175);
 }
@@ -71,9 +79,22 @@ h1 {
     padding: 6%
 }
 
+.margin-left {
+    margin-left: -17%;
+}
+
+
 li.nav-item {
     margin-top: 10%;
 }
+
+
+
+/*
+li.nav-item:hover {
+    color: #701d0d;
+}
+
 
 li.a:hover {
     color: #701d0d;
@@ -90,6 +111,7 @@ li.nav-item:hover {
 .dropdown-font:hover {
     color: #701d0d;
 }
+    /*
 
 /* Main Styles */
 
@@ -135,10 +157,11 @@ main {
     font-size: large;
 }
 
+/*
 .card-title:hover {
     color: #701d0d;
 }
-
+*/
 
 #recipe {
     font-size: smaller;
@@ -316,14 +339,15 @@ footer {
         padding-left: 21%;
     }
 
-    nav.navbar.navbar-expand-lg {
+    /*nav.navbar.navbar-expand-lg {
         width: 100%;
-    }
+    }*/
 
     .margin-left {
-        margin-left: 26%;
-        margin-bottom: -7%;
+        margin-left: 24%;
+        margin-bottom: -15%;
     }
+
 
     .navbar-expand-lg .navbar-nav {
         font-size: 142%;
@@ -331,13 +355,18 @@ footer {
         align-items: baseline;
     }
 
-    .nav-item-three {
-        margin-left: 214%;
+
+    .navbar-margin {
+        margin-left: 12%;
     }
 
-    .nav-item-four {
+    /*.nav-item-three {
+        margin-left: 214%;
+    }*/
+
+    /*.nav-item-four {
         margin-left: 588%;
-    }
+    }*/
 
     .btn-one-position {
         font-size: 120%;
@@ -363,13 +392,13 @@ footer {
         font-size: 125%;
     }
 
-    #nav-item-one {
+    /*#nav-item-one {
         margin-left: 40%;
     }
 
     #nav-item-two {
         margin-left: 223%;
-    }
+    }*/
 
     #ingredients {
         padding-left: 10%;
@@ -391,8 +420,13 @@ footer {
 /* responsive styling for screens 1200px and above */
 @media screen and (min-width: 1200px) {
 
-    .navbar-expand-lg .navbar-nav {
+    /*.navbar-expand-lg .navbar-nav {
         font-size: 162%;
+    }*/
+
+    .margin-left {
+        margin-left: 19%;
+        margin-bottom: -12%;
     }
 
     .btn-one-position {
