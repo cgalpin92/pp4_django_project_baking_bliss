@@ -179,6 +179,7 @@ def comment_edit(request, slug, comment_id):
             messages.add_message(request, messages.ERROR, 'Error updating Comment!')
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
+
 """
 This function view allows users to delete their own comments.
 A message will then display to the user confirming that the comment has 
@@ -206,7 +207,6 @@ def comment_delete(request, slug, comment_id):
 @login_required
 def recipe_edit(request, slug):
 
-    #queryset = Recipe.objects.all()
     recipe = get_object_or_404(Recipe, slug=slug)
 
     if request.method == "POST":
@@ -222,7 +222,7 @@ def recipe_edit(request, slug):
 
             messages.add_message(request, messages.SUCCESS, 'Your Recipe has been updated!')
        
-            return HttpResponseRedirect('recipe_user')
+            return HttpResponseRedirect(reverse('users_recipe'))
     else:
 
         recipe_form = RecipeForm(instance=recipe)
@@ -234,5 +234,24 @@ def recipe_edit(request, slug):
             "recipe_form": recipe_form
         }
     )
+
+
+@login_required
+def recipe_delete(request, recipe_id):
+
+    recipe = get_object_or_404(Recipe, pk=recipe_id)
+
+    if recipe.author == request.user:
+        recipe.delete()
+        messages.add_message(request, messages.SUCCESS, 'Your Recipe has been deleted!')
+    
+        
+    else:
+        messages.add_message(request, messages.ERROR, 'You can only delete your own recipe!')
+
+        
+    return HttpResponseRedirect(reverse('users_recipe'))
+    
+     
 
 

@@ -17,6 +17,7 @@
                     {{ recipe_form | crispy | safe }}
                     {% csrf_token %}
                     <button id="submitButton" type="submit" class="btn font-two lilac-font">Update Recipe</button>
+                    <button id="submitButton" type="submi" class="btn font-two lilac-font">Delete Recipe</button>
                 </form>
                 {% else %}
                 <p>You need to be signed in upload a recipe</p>

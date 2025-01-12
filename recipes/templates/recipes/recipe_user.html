@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 
 <div class="container-fluid">
     <div class="row">
@@ -33,11 +34,14 @@
                                 <p class="brown-color mb-2">Awaiting
                                     approval</p>
                                 {% else %}
-                                <p class="lilac-font mb-2">Category: {{recipe.category}}</p>
-                                <p class="lilac-font mb-2">Difficulty: {{recipe.difficulty}}</p>
-                                <p class="lilac-font mb-2">Author: {{recipe.author}}</p>
-                                <a href="{% url 'recipe_edit' recipe.slug %}"><button>Edit Recipe</button></a>
+                                <p class="lilac-font">Approved</p>
                                 {% endif %}
+                            </div>
+                            <div class="card-footer d-flex justify-content-center">
+                                <a href="{% url 'recipe_edit' recipe.slug %}"><button
+                                        class="btn font-two lilac-font m-2">Edit Recipe</button></a>
+                                <button class="btn btn-delete-recipe font-two lilac-font m-2"
+                                    recipe_id="{{ recipe.id }}">Delete</button>
                             </div>
                         </div>
                     </div>
@@ -54,5 +58,33 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-        {% endblock %}
+<div class="modal fade" id="deleteRecipeModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content cream-color font-two brown-color">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel"><strong>Warning!!</strong>You are about to delete your
+                    Recipe?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Hi {{ user }}, are you sure you want to delete your Recipe? Once deleted it cannot be undone.
+                If you have changed your mind then select Cancel. If you would still like to delete your Recipe then
+                press the Delete button below.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary lilac-font font-two"
+                    data-bs-dismiss="modal">Cancel</button>
+                <a href="#" id="deleteRecipeConfirm" class="btn btn-danger brown-color font-two">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extras %}
+<script src="{% static 'js/recipe.js' %}"></script>
+{% endblock %}

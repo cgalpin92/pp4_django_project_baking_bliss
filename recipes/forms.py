@@ -12,8 +12,10 @@ class RecipeForm(forms.ModelForm):
     ingredients = forms.ModelMultipleChoiceField(
         queryset=Ingredient.objects.all().order_by('ingredient_name'),widget=forms.CheckboxSelectMultiple)
     
+    
     equipment = SummernoteTextFormField()
     method = SummernoteTextFormField()
+    
 
     
 
