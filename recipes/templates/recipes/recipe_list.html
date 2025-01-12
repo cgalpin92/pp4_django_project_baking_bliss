@@ -10,8 +10,7 @@
      details are removed -->
 
     <h2 class="cream-font font-two text-center p-2">Recipes</h2>
-    <a href="{% url 'home' %}"><button type="button"
-            class="btn btn-one-position font-two lilac-font">Categories</button></a>
+    <h3><a href="{% url 'home' %}" class="btn btn-one-position font-two lilac-font">Categories</a></h3>
     <div class="col-12 left">
         <div class="row">
             {% for recipe in object_list %}

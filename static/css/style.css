@@ -135,9 +135,10 @@ main {
 }
 
 .btn-one-position {
-    margin-left: 40%;
+    margin-left: 37%;
     margin-top: -7%;
     padding: 1%;
+    font-size: 62%;
 }
 
 .btn:hover {
@@ -147,6 +148,16 @@ main {
 .btn-close {
     margin-right: 44%;
     margin-top: 8%;
+}
+
+#edit-btn {
+    font-size: 50%;
+    padding: 4%;
+    height: 43px;
+}
+
+#delete-btn {
+    height: 43px;
 }
 
 .recipe-card {
@@ -162,6 +173,10 @@ main {
     color: #701d0d;
 }
 */
+
+.height {
+    height: 41px;
+}
 
 #recipe {
     font-size: smaller;
@@ -236,11 +251,15 @@ footer {
 
     .btn-one-position {
         margin-top: -10%;
-        margin-left: 39%;
+        margin-left: 34%;
     }
 
     .font-size {
         font-size: small;
+    }
+
+    .height {
+        height: 34px;
     }
 
     #message-alignment {
@@ -272,7 +291,7 @@ footer {
     .btn-one-position {
         margin-left: 86%;
         margin-top: -12%;
-        font-size: 85%;
+        /*font size: 85%;*/
     }
 
     .btn-close {
@@ -302,6 +321,7 @@ footer {
     .font-size {
         font-size: large;
     }
+
 
     #username-font {
         font-size: 140%;
@@ -369,7 +389,7 @@ footer {
     }*/
 
     .btn-one-position {
-        font-size: 120%;
+        /*font-size: 120%;*/
         margin-left: 85%;
     }
 
@@ -430,7 +450,7 @@ footer {
     }
 
     .btn-one-position {
-        font-size: 169%;
+        margin-left: 90%;
     }
 
     .category-card {
@@ -452,10 +472,18 @@ footer {
     }
 }
 
-/* responsive styling for screens 768px and above */
+/* responsive styling for screens 1400px and above */
 @media screen and (min-width: 1400px) {
 
     .category-card {
         height: 330px;
+    }
+}
+
+/* responsive styling for screens 1600px and above */
+@media screen and (min-width: 1600px) {
+
+    .margin-left {
+        margin-left: 14%;
     }
 }

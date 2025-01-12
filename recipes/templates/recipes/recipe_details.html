@@ -79,8 +79,8 @@
                         {% endif %}
                         <p>Awaiting approval</p>
                         {% if user.is_authenticated and comment.author == user %}
-                        <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
-                        <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
+                        <button class="btn btn-delete lilac-font" comment_id="{{ comment.id }}">Delete</button>
+                        <button class="btn btn-edit lilac-font" comment_id="{{ comment.id }}">Edit</button>
                         {% endif %}
                     </div>
                     {% elif not comment.approved %}
@@ -106,8 +106,8 @@
                                 class="fa-solid fa-star"></i></p>
                         {% endif %}
                         {% if user.is_authenticated and comment.author == user %}
-                        <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
-                        <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
+                        <button class="btn btn-delete lilac-font" comment_id="{{ comment.id }}">Delete</button>
+                        <button class="btn btn-edit lilac-font" comment_id="{{ comment.id }}">Edit</button>
                         {% endif %}
                     </div>
                     {% endif %}
@@ -142,11 +142,11 @@
     <div class="row">
         <div class="col d-flex justify-content-end p-2">
             <button onclick="window.history.back();" type="button"
-                class="btn font-two lilac-font font-size">Back</button>
+                class="btn font-two lilac-font font-size height">Back</button>
         </div>
         <div class="col d-flex justify-content-start p-2">
-            <a href="{% url 'recipes' %}"><button type="button" class="btn font-two lilac-font font-size">All
-                    Recipes</button></a>
+            <h4><a href="{% url 'recipes' %}" class="btn font-two lilac-font font-size height">All
+                    Recipes</a></h4>
         </div>
     </div>
 </div>
