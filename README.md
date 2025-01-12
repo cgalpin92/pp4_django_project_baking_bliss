@@ -49,11 +49,120 @@
 
 ## Design
 
+  -__Color Scheme__
+
+    - There are 3 main colors used across the Baking Bliss site, with an additional 3 supporting colors. 
+      - These 3 main colors are Coral, Cream and Brown and are used primarily for background colors and main content font.
+        - The Header, Footer, Recipe Cards and forms have a cream background and these are consistent across all pages.
+        - The Header and Footer font are brown, intending to be clear stand out catching the user's attention.
+        - The menu items within the Header are in coral, again contrasting against the cream background and tying in with the rest of the color scheme.
+        - On all pages the primary background color is coral to keep consistency.
+      - The supporting 3 colors are lilac, blush and grey which are used for buttons and indicating content waiting for approval. They again stand out from the rest of the content idicating a purpose. 
+
+  -__Typography__
+
+    - The fonts Outfit, Comfortaa and Playfair Display are used across the Baking Bliss site. 
+    - Outfit - This font is used for the site name only to make this stand out. The site name is also in uppercase, again to grab the users attention.
+    - Comfortaa is used for the menu items, buttons and remaining headers. Its a slightly softer font to the site name but still stands out and grabs the users attention. 
+    - Playfair Display is used for any text content, again differentiating it from headers and action items.
+
+
 ## Features
 
 ### Existing Features
 
+-__Header and Navigation Bar__
+
+  - The Header and Navigation Bar encompasses the Site Name and the menu. Its featured at the top of the page with the Site Name in large font. The menu is fully responsive, either located beneath the Site Name across the width of the header on larger screens, or when on smaller screens as a burger icon to the top left of the page, which expands vertically when checked. Within the menu there is also an additional dropdown menu called Account which expands vertically when checked and lists the menu items; Login and Register (when the user is logged out) and the user's Username, Upload a Recipe, My Recipes and Logout (when the user is logged in).
+
+  - The Header has a cream background with brown font for the Site Name and coral font for the Menu Items. However the username is in a lilac font to differentiate this item from the rest of the clickable menu items, it is also an an indication to the user that they are signed in.
+
+  - The Header and Menu are identical across all pages to keep consistency and to ensure that it is easy to navigate for the user. Its fully responsive depending on the screen size its viewed on.
+
+
+-__Home Page__
+
+  - The Home page displays a list of category cards. Each card includes an image relating to that category. There is also a button labelled All Recipes that the user can select to view all the recipes in one list.
+
+  - The aim of this page is to initially filter the recipes so that the site user can select the category they are interested in, rather than being presented straight away with a list of recipes, giving them a better user experience.  
+
+
+-__About Page__
+
+  - The About page introduces the purpose of the site along with the site owner and why they created Baking Bliss. The same color scheme is used to provide consistance for the user. The page content consists of a mage of baking items, information about the site and a date a the bottom of the screen indicating when this was last updated.
+  
+
+-__All Recipes__
+
+  - The All Recipes page lists all the Recipes regardless of category. The purspose of this page is to have one space where all the recipes are listed for the user.
+  - If the recipe is still waiting on approval from the Site Owner then they recipe name is displayed in a light grey font and does not show the Category, Difficulty and Author and instead displays the text Awaiting approval in brown font. If the recipe is approved then the recipe title becomes the clickable link to the recipe details, however if the recipe is still waiting on approval the link is removed.
+  - There is a button at the top of the page labelled Categories which takes the user back to the home page.
+  
+
+-__My Recipes__
+
+  - The My Recipes page lists all the recipes by the signed in user. Each approved recipe is displayed on a cream card with coral font for the recipe name and lilac font for the approved status. For the unapproved recipes the recipe name is in a grey font with the status Awaiting approval in brown font.
+
+  - This page is to allow the user to find their own recipes. They also have the ability to Edit and Delete their recipes from this page.
+
+  - If the user does edit or delete a recipe they are notified with a message at the top of the page.
+
+-__Recipe Details__
+
+  - This page displays the recipe information.
+
+    - Recipe:
+      - The first card on the page is the Recipe Card. This encompasses all the information for the recipe; Ingredients, Equipment, Method. The section headers are in lilac font with the information content in brown font. 
+    - Comments:
+      - The second card on the page is the Comments Card. It displays all the comments made by users about the recipe. The Comments title is in lilac font with the comments in brown font.
+      - If the user is logged in they have the ability to Delete and Edit their own comments via the corresponding buttons.
+    - Comment Form:
+      - The final card on the page is the Comment Form Card. This allows a logged in user to leave a comment about the recipe. It has a section for the comment title, comment body and star rating. When this comment is submitted it is initially in grey font until approved by the Site Owner. The rating number is also converted into number of stars for a better user experience.
+
+
+-__Upload a Recipe__
+
+  - This page is the form for users to upload a new recipe, or edit an existing recipe. 
+
+    - New Recipe:
+      - If the user selects Upload Recipe from the menu in the header they are taken to a new form with no pre-populated information. The form includes the following fields:
+        - Recipe Name - Character Field
+        - Ingredients - Checkboxes, the user can select as many as needed
+        - Other Ingredients - A text field for the user to input any additional ingredients that are not listed above. The Site Owner can then input these into the database before they appove the recipe.
+        - Equipment - Summernote Text Field - allows the user to style this information, for example as a list.
+        - Method - Summernote Text Field - again allows the user to style this information, for example with bold headings for each steap.
+        - Category - Drop down options list
+        - Difficulty - Drop down options list with default set to Easy
+      - At the bottom of the form is an Upload Recipe button which send the recipe off for approval. The user is then notified via a message at the top of the screen. The recipe will also appear in the Recipes List, appropriate Cateogry page and My Recipe page in a grey out awaiting approval format.
+    
+    - Edit a recipe:
+      - If the user selects Edit Recipe from the My Recipe page they are taken to the Upload Recipe form, however the page title states Edit Recipe and the form fields are pre-populated with the existing information which the user can change. There is a update recipe button at the bottom of the form. The new information will then replace the old recipe information. 
+
+-__Register__
+
+  - The register page is accessed from the dropdown Account menu when the user is logged out. When taken to this page the user is presented with a form to enter a username, optional email address and a password, there is also information on requirements for the password. There is a button at the bottom of the page labelled Sign Up. This will register the user on the database.
+  - At the top of the page there is a button which is labelled sign in and accompanied by the text "Already have an account? Then please sign in" to ensure that an pre-existing user does not try to sign up again.
+  - Once registered a message appears at the top of the screen confirming to the user they have registered.
+
+-__Login__
+
+  -  The login page, access via the menu in the header, provides the user with the Username and Password fields to sign in. If they have not created an account yet they can select the Sign Up button which will take them to the Register Page. Once signed in a message appears at the top of the screen confirming to the user they have signed in. Their username also appears in the header menu within the accounts dropdown.
+
+-__Log Out__
+
+  - This page is also located via the menu in the header, when selecting this page the user is asked if they are sure they would like to sign out to give better user experience rather than just signing the user out. Once signed out a message appears at the top of the screen confirming to the user they have signed out.
+
+-__Footer__
+
+  - The footer is located at the bottom of the page and is in the same style as the header. It is same across all pages to keep consistency. The copyright information is located here.
+
 ### Features left to Implement
+
+  - Message board thread for users to interact rather than just within the comments
+  - A profile page for the user where they can update their username, email address and password
+  - Ability to upload photos with the recipes
+  - A dark mode toggle feature
+  - Search function or filter so that users can search for recipes by ingredient or author
 
 ## Technologies Used
 
@@ -97,6 +206,11 @@
 ## Testing
 
 ### Manual Testing
+
+-__Responsiveness Testing__
+
+-__Browser Compatibility Testing__
+
 
 
 
