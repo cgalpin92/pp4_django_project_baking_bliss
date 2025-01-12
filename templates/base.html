@@ -37,12 +37,11 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarText">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 font-two">
-                            <a href="{% url 'home' %}">
-                                <li class="nav-item" id="nav-item-one">Home</li>
-                            </a>
-                            <a href="{% url 'about' %}">
-                                <li class="nav-item" id="nav-item-two">About</li>
-                            </a>
+                            <li class="nav-item" id="nav-item-one"><a href="{% url 'home' %}">Home</a></li>
+
+
+                            <li class="nav-item" id="nav-item-two"><a href="{% url 'about' %}">About</a></li>
+
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle nav-item-three dropdown-font" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -50,28 +49,23 @@
                                 </a>
                                 <ul class="dropdown-menu nav-item-three">
                                     {% if user.is_authenticated %}
-                                    <li class="dropdown-item dropdown-font lilac-font">
+                                    <li class="dropdown-item lilac-font">
                                         Hi {{ user }}
                                     </li>
-                                    <a href="{% url 'recipe_upload' %}">
-                                        <li class="dropdown-item dropdown-font">Upload a Recipe</li>
-                                    </a>
-                                    <a href="{% url 'users_recipe' %}">
-                                        <li class="dropdown-item dropdown-font">My Recipes</li>
-                                    </a>
-                                    <a {% if request.path == logout_url %}active{% endif %} aria-current="page"
-                                        href="{% url 'account_logout' %}">
-                                        <li class="dropdown-item dropdown-font">Logout</li>
-                                    </a>
+                                    <li class="dropdown-item dropdown-font"><a href="{% url 'recipe_upload' %}">Upload a
+                                            Recipe</a></li>
+                                    <li class="dropdown-item dropdown-font"><a href="{% url 'users_recipe' %}">My
+                                            Recipes</a></li>
+                                    <li class="dropdown-item dropdown-font"><a
+                                            {% if request.path == logout_url %}active{% endif %} aria-current="page"
+                                            href="{% url 'account_logout' %}">Logout</a></li>
                                     {% else %}
-                                    <a {% if request.path == signup_url %} active{% endif %} aria-current="page"
-                                        href="{% url 'account_signup' %}">
-                                        <li class="dropdown-item dropdown-font">Register</li>
-                                    </a>
-                                    <a {% if request.path == login_url %}active{% endif %} aria-current="page"
-                                        href="{% url 'account_login' %}">
-                                        <li class="dropdown-item dropdown-font">Login</li>
-                                    </a>
+                                    <li class="dropdown-item dropdown-font"><a {% if request.path == signup_url %}
+                                            active{% endif %} aria-current="page"
+                                            href="{% url 'account_signup' %}">Register</a></li>
+                                    <li class="dropdown-item dropdown-font"><a
+                                            {% if request.path == login_url %}active{% endif %} aria-current="page"
+                                            href="{% url 'account_login' %}">Login</a></li>
                                     {% endif %}
                                 </ul>
                             </li>
@@ -122,7 +116,7 @@
 
     <footer class="cream-color">
         <h6 class="brown-color font-one text-center p-2">Copyright<i class="fa-regular fa-copyright"></i> Baking Bliss
-            2024</h5>
+            2024</h6>
     </footer>
 
     <!-- Font Awesome  -->

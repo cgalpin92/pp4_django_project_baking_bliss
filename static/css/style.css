@@ -75,6 +75,10 @@ li.nav-item {
     margin-top: 10%;
 }
 
+li.a:hover {
+    color: #701d0d;
+}
+
 li.nav-item:hover {
     color: #701d0d;
 }
@@ -226,7 +230,7 @@ footer {
     h1 {
         font-size: 400%;
         margin-left: -44%;
-        padding: 3%S;
+        padding: 3%;
     }
 
     nav {
