@@ -13,6 +13,7 @@ from .forms import RecipeForm, CommentForm
 
 """
 This class view lists all the Categories and displays them in Index.html
+Based on PostList view from Walkthrough project
 """
 
 class CategoryList(generic.ListView):
@@ -22,6 +23,7 @@ class CategoryList(generic.ListView):
 """
 This class view lists all the Recipes, ordering them by newest recipe first
 and displays them in recipe_list.html
+Based on PostList view from Walkthrough project
 """
 class RecipeList(generic.ListView):
     queryset = Recipe.objects.all().order_by('-created_on')
@@ -75,10 +77,10 @@ def recipe_by_author(request):
 This function view is the recipe details page.
 It filters the Recipe model by only approved recipes
 The function also fetches all the Ingredients objects
-so that they can be looped through in the page the Ingredient
-model has a many to many relationship with the Recipe Model.
+so that they can be looped through in the template.
 The comment form is created below and displayed within the Recipe
 Details view
+Based on the post_detail view in the walkthrough project
 """
 def recipe_detail(request, slug):
     
@@ -157,6 +159,7 @@ been updated if successfull or stating an Error if not.
 The @login_required decorator at the start ensures that only users logged in can 
 access this associated URL, if the are not then they are re-directed to the login
 page. Once logged in they will be automatically returned to the recipe_details.html page
+Taken from the comment_edit function in the walkthrough project
 """
 @login_required
 def comment_edit(request, slug, comment_id):
@@ -187,6 +190,7 @@ been deleted if successfull or stating an Error if not.
 The @login_required decorator at the start ensures that only users logged in can 
 access this associated URL, if the are not then they are re-directed to the login
 page. Once logged in they will be automatically returned to the recipe_details.html page
+Taken from the comment_delete function in the walkthrough project
 """
 @login_required
 def comment_delete(request, slug, comment_id):
@@ -204,6 +208,16 @@ def comment_delete(request, slug, comment_id):
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
 
+"""
+This function view allows edit their own recipes.
+The user is taken to the pre-populated form to update their details and save
+changes.
+A message will then display to the user confirming that the recipe has been 
+updated if successfull or stating an Error if not.
+The @login_required decorator at the start ensures that only users logged in can 
+access this associated URL, if the are not then they are re-directed to the login
+page. Once logged in they will be automatically returned to the update page
+"""
 @login_required
 def recipe_edit(request, slug):
 
@@ -235,7 +249,14 @@ def recipe_edit(request, slug):
         }
     )
 
-
+"""
+This function view allows users to delete their own recipes.
+A message will then display to the user confirming that the comment has 
+been deleted if successfull or stating an Error if not.
+The @login_required decorator at the start ensures that only users logged in can 
+access this associated URL, if the are not then they are re-directed to the login
+page. Once logged in they will be automatically returned to the recipe_user.html page
+"""
 @login_required
 def recipe_delete(request, recipe_id):
 
