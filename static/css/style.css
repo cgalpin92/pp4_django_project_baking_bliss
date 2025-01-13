@@ -175,6 +175,9 @@ ul {
     list-style-type: none;
 }
 
+.summernote-div {
+    width: 100%;
+}
 
 #comment-form {
     padding-top: 7%;

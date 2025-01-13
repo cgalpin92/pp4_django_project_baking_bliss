@@ -5,9 +5,6 @@
     <div class="row">
 
         <!-- List of recipes by category selected in index.html -->
-        <!-- if the recipe is awaiting approval then there is no href link,
-        the font is greyed out and the Category, Difficulty and Author 
-        details are removed -->
         <h2 class="cream-font font-two text-center p-2">Recipes</h2>
         <h3><a href="{% url 'recipes' %}" class="btn btn-one-position font-two lilac-font">All
                 Recipes</a></h3>
@@ -45,7 +42,6 @@
             </div>
         </div>
     </div>
-    <!-- button to go back to previous window, in this case it will be index.html -->
     <div class="row">
         <div class="col d-flex justify-content-center">
             <button onclick="window.history.back();" type="button"

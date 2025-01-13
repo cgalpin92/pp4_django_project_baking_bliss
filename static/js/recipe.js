@@ -15,7 +15,7 @@ const deleteConfirm = document.getElementById("deleteConfirm");
  */
 for (let button of deleteButtons) {
     button.addEventListener("click", (e) => {
-        let recipeId = e.target.getAttribute("recipe_id");
+        let recipeId = e.target.getAttribute("data-recipe_id");
         deleteRecipeConfirm.href = `recipe_delete/${recipeId}`;
         deleteModal.show();
     });

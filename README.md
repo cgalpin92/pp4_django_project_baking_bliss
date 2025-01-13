@@ -356,42 +356,22 @@
 
 -__HTML__
 
-  - When passing the code through the official W3C validator the following errors occurred due to either Bootstrap or Summernote styling:
-
-    - base.html 
-      - Error - The aria-controls attribute must point to an element in the same document.
-      - This error was not resolved due to the element it is referring to is a bootstrap imported element for the navbar menu toggle on smaller screens.
-      - Due to every page extending from base.html, this error re-occurred for each page test.
-    
-    - about.html
-      - Error - No p element in scope but a p end tag seen.
-      - This error was not resolved due to the p element filtering through from Summernote editor on the admin site. I navigated to this content in Admin and checked that no remaining spaces were at the end of the content in case this resolved the issue, however it did not.
-    
     recipe_detail.html
       - Warning - Element name o:p cannot be represented as XML 1.0
       - I believe this is a result of using Summernote to style the recipe method.
 
       - Error - Element o:p not allowed as a child of element p in this context
-      - Again I believe this is a result of using Summernote to style the recipe method.
-
-      - Error - No p element in the scope but a p end tag seen.
-      - Again believe this is due to Summernote customisation in the admin.
-
-      - Error - Attribute comment_id not allowed on element button at this point.
-      - This I believe relates to the JavaScript code for editing and deleting the comments. It allows for the specific comment to be identified. This was taken from the Walkthrough project.
+      - cannot access o:p element or p element as this is within summernote.
 
       - Error - End tag main seen, but there were open elements.
-      - can confirm that the structure is correct, this was due to taking the code to input into validator from the site's source code to avoid the use of DTL throwing errors.
+      - can confirm that the structure is correct, this was due to taking the code to input into validator from the site's source code to avoid the use of DTL throwing errors, the site's source code is set slightly differently.
 
       - Error - Unclosed element div
-      - can confirm that the structure is correct, this was due to taking the code to input into validator from the site's source code to avoid the use of DTL throwing errors.
+      - can confirm that the structure is correct, this was due to taking the code to input into validator from the site's source code to avoid the use of DTL throwing errors, the site's source code is set slightly differently.
     
-    recipe_user.html
-      - Error - Attribute recipe_id not allowed on element button at this point.
-      - Same error as in recipe_detail for comment_id - believe relates to the JavaScript code for editing and deleting the comments. It allows for the specific comment to be identified. The syntax for relating the JavaScript code to the element was taken from the Walkthrough project.
     
     recipe_edit.html
-      - The following errors were due to Summernote styling within the recipe_upload form:
+      - The following errors were due to Summernote styling within the recipe_upload form, attempted to acccess their class names and override the styling within CSS and remove the SUMMERNOTE_CONFIG settings in settings.py, however none were successful.
         - Bad value true for attribute hidden on element textarea.
         - Element style not allowed as child of element div in this context. (Suppressing further errors from this subtree.)
         - Duplicate attribute class.
@@ -407,12 +387,14 @@
       - Django all AUTH input
     
     signup.html
-      - Following errors are part of Django All_auth:
+      - Following errors are part of Django All_auth HTML which I am unable to access through signup.html:
         - End tag p implied, but there were open elements.
         - Unclosed element span.
         - Stray end tag span.
         - No p element in scope but a p end tag seen.
-
+    
+    - All other HTML tests passed the validator
+    
 -__CSS__
 
   - No errors were found when passing through the official (Jigsaw) validator
@@ -464,6 +446,15 @@
       - When following the steps to edit and delete the comments on a recipe page the buttons were not responding to the mouse click.
       - The delete function was due to a typo within comment.js, once this was resolved the comment would delete when requested.
       - The comment issue was due to a missing id from the comment_body element. Once this was added the edit button would allow the user to update the comment.
+    
+    - When passing the code through the official W3C validator the following errors occurred due to either Bootstrap or Summernote styling:
+      - Error - The aria-controls attribute must point to an element in the same document - fixed this issue by adding an id to the Nav item and assigning it the same value as the aria-controlls attribute - https://webmasters.stackexchange.com/questions/60241/w3c-validation-error-aria-controls-attribute-must-point-to-an-element-in-the-sa
+
+    - Error - No p element in scope but a p end tag seen - due to the p element filtering through from Summernote editor on the admin site - fixed through changing the p element to a article element.
+
+    - Error - Attribute recipe_id not allowed on element button at this point - resolved this by adding data tags infront of recipe_id in both the HTML and the JS code.
+
+    
 
   - __Unfixed Bugs__
 
@@ -506,6 +497,13 @@ For further information and a more detailed explanation, click [Here](https://he
 
 ### Heroku
 This project was deployed using Heroku.
+-__Prior stepts__
+To project required the following steps prior to the deployment to Heroku.
+  - install gunicorn ~=20.1 - the production equivalent of manage.py runserver
+    - The creation of Profile with the inclusion of web:gunicorn baking_bliss.wsgi - the command heroku uses to find the correct .py file to run and start the server
+
+  - add .herokuapp.com to ALLOWED_HOSTS within settings.py
+
 
 - __Steps for deployment:__
     - Fork or clone this repository

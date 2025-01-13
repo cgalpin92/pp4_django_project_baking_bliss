@@ -23,24 +23,26 @@ class RecipeList(generic.ListView):
 
 def recipe_by_category(request, category):
     """
-    fetches the category name selected and assigns it
-    the variable category_selected
-    """
-    """
-    exception is used in case a category does not exist in the database
+    Displays a list of recipes filtered by the category
+    selected 
+    Displays an individual :model:`recipe.Recipe`
+    related to :model:`category:Category`
+    **Context**
+    ``category selected``
+        identifies the category selected from
+        :model: `category_name:Category`
+    ``recipes``
+        renders the list of recipes filtered by
+        category_selected
+    **Template**
+    :template: `recipes/recipe_category.html`
     """
     try:
         category_selected = Category.objects.get(
             category_name__icontains=category)
     except ObjectDoesNotExist:
         return HttpResponseRedirect(reverse('home'))
-    """
-    filters all the recipes by category_selected
-    """
     recipes = Recipe.objects.filter(category=category_selected)
-    """
-    returns the view to recipe_category.html
-    """
     return render(
         request,
         "recipes/recipe_category.html",
@@ -53,11 +55,18 @@ def recipe_by_category(request, category):
 @login_required
 def recipe_by_author(request):
     """
-    lists all the Recipes by the user signed into Baking Bliss
-    """
-    """
-    @login_required decorator at the start ensures that only logged in
-    users can access this associated URL
+    Displays a list of recipes filtered by the logged in
+    user
+    Displays an instance of :model:`recipe.Recipe` related
+    to :model:`user:User`
+    **Context**
+    ``user``
+        authenticated user of :model:`user.User`.
+    ``profile``
+        An instance of :model: `recipe.Recipe` filtered
+        by the authenticated user.
+    **Template**
+    :template: `recipe/recipe_user.html`
     """
     user = get_object_or_404(User, username=request.user)
     profile = Recipe.objects.filter(author=user).order_by('-created_on')
@@ -73,11 +82,18 @@ def recipe_by_author(request):
 
 def recipe_detail(request, slug):
     """
-    lists the recipe information along with the comments
-    and comments form
-    """
-    """
-    Based on the post_detail view in the walkthrough project
+    Displays an individual :model:`recipe.Recipe`
+    **Context**
+    ``recipe``
+        an instance of :model:`recipe.Recipe`.
+    ``comments``
+        All approved comments related to recipe.
+    ``ingrediants``
+        All ingredients related to recipe.
+    ``comment_form``
+        An instance of :form:`recipe.CommentForm`.
+    **Template**
+    :template: `recipe/recipe_details.html`
     """
     queryset = Recipe.objects.filter(status=1)
     recipe = get_object_or_404(queryset, slug=slug)
@@ -110,11 +126,13 @@ def recipe_detail(request, slug):
 @login_required
 def recipe_upload(request):
     """
-    view for users to upload a recipe to Baking Bliss
-    """
-    """
-    @login_required decorator ensures only logged in
-    users can upload recipes
+    Displays an instance :form:`recipe.RecipeForm`
+    **Context**
+    ``recipe_form``
+        an instance of :form:`recipe.RecipeForm
+        related to the recipe selected`.
+    **Template**
+    :template: `recipe/recipe_upload.html`
     """
     if request.method == "POST":
         recipe_form = RecipeForm(data=request.POST)
@@ -124,9 +142,6 @@ def recipe_upload(request):
             recipe.slug = slugify(recipe.recipe_name)
             recipe.save()
             recipe_form.save_m2m()
-            """
-            same_m2m() required to save all options to database
-            """
             messages.add_message(
                 request, messages.SUCCESS,
                 "Your Recipe has been submitted for approval"
@@ -144,7 +159,17 @@ def recipe_upload(request):
 @login_required
 def comment_edit(request, slug, comment_id):
     """
-    view to allow logged in users to edit their own comments
+    Displays an instance of :model:`comment.Comment`
+    **Context**
+    ``recipe``
+        an instance of :model:`recipe.Recipe` related
+        to Recipe.status and Recipe.slug.
+    ``comment``
+        A single comment related to the post.
+    ``comment_form``
+        An instance of :form:`recipe.CommentForm`.
+    **Template**
+    :template: `recipe/recipe_details.html`
     """
     if request.method == "POST":
 
@@ -169,7 +194,16 @@ def comment_edit(request, slug, comment_id):
 @login_required
 def comment_delete(request, slug, comment_id):
     """
-    view to allow only logged in users to delete their own comments
+    Deletes an individual comment.
+    **Context**
+    ``recipe``
+        an instance of :model:`recipe.Recipe` related
+        to Recipe.status and Recipe.slug.
+        to Recipe.status and Recipe.slug.
+    ``comment``
+        A single comment related to the post
+    **Template**
+    :template: `recipe/recipe_details.html`
     """
     queryset = Recipe.objects.filter(status=1)
     recipe = get_object_or_404(queryset, slug=slug)
@@ -187,7 +221,15 @@ def comment_delete(request, slug, comment_id):
 @login_required
 def recipe_edit(request, slug):
     """
-    view to allow only logged in users to edit recipes they have uploaded
+    Displays an instance of :model:`recipe.Recipe`
+    **Context**
+    ``recipe``
+        a single recipe related
+        to Recipe.slug.
+    ``recipe_form``
+        An instance of :form:`recipe.RecipeForm`.
+    **Template**
+    :template: `recipe/recipe_edit.html`
     """
     recipe = get_object_or_404(Recipe, slug=slug)
     if request.method == "POST":
@@ -215,7 +257,12 @@ def recipe_edit(request, slug):
 @login_required
 def recipe_delete(request, recipe_id):
     """
-    view to allow only logged in users to delete recipes they have uploaded
+    Deletes an individual recipe
+    **Context**
+    ``recipe``
+        a single recipe related to the recipes unique id.
+    **Template**
+    :template: `recipe/recipe_user.html`
     """
     recipe = get_object_or_404(Recipe, pk=recipe_id)
     if recipe.author == request.user:

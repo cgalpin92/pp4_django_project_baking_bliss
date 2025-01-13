@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col" id="method">
                         <h3 class="lilac-font padding" id="recipe_id">Method:</h3>
-                        <p class="brown-color">{{ recipe.method|safe }}</p>
+                        <article class="brown-color">{{ recipe.method|safe }}</article>
                     </div>
                 </div>
             </div>
@@ -49,8 +49,6 @@
     <div class="row mt-4">
 
         <!-- Displaying all comments -->
-        <!-- if a comment is awaiting approval then it will be greyed out and 
-                only visible if the author of the comment is logged in -->
         <div class="col-lg-6">
             <div class="card cream-color font-two" id="comments-card">
                 <div class="card-title">
@@ -79,8 +77,8 @@
                     {% endif %}
                     <p>Awaiting approval</p>
                     {% if user.is_authenticated and comment.author == user %}
-                    <button class="btn btn-delete lilac-font" comment_id="{{ comment.id }}">Delete</button>
-                    <button class="btn btn-edit lilac-font" comment_id="{{ comment.id }}">Edit</button>
+                    <button class="btn btn-delete lilac-font" data-comment_id="{{ comment.id }}">Delete</button>
+                    <button class="btn btn-edit lilac-font" data-comment_id="{{ comment.id }}">Edit</button>
                     {% endif %}
                 </div>
                 {% elif not comment.approved %}
@@ -106,8 +104,8 @@
                             class="fa-solid fa-star"></i></p>
                     {% endif %}
                     {% if user.is_authenticated and comment.author == user %}
-                    <button class="btn btn-delete lilac-font" comment_id="{{ comment.id }}">Delete</button>
-                    <button class="btn btn-edit lilac-font" comment_id="{{ comment.id }}">Edit</button>
+                    <button class="btn btn-delete lilac-font" data-comment_id="{{ comment.id }}">Delete</button>
+                    <button class="btn btn-edit lilac-font" data-comment_id="{{ comment.id }}">Edit</button>
                     {% endif %}
                 </div>
                 {% endif %}
@@ -116,7 +114,6 @@
         </div>
 
         <!-- Leave a Comment Form -->
-        <!-- can only leave a form if the user is logged in -->
         <div class="col" id="comment-form">
             {% if user.is_authenticated %}
             <div class="card cream-color font-two">
@@ -138,7 +135,6 @@
         </div>
     </div>
 </div>
-<!-- Buttons to either return to previous page or view all recipes -->
 <div class="row">
     <div class="col d-flex justify-content-end p-2">
         <button onclick="window.history.back();" type="button"
@@ -152,8 +148,7 @@
 </div>
 
 
-<!-- Delete confirmation modal for when user deletes a comment
-    to check that the user would like to delete the comment -->
+<!-- Delete confirmation modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content cream-color font-two brown-color">

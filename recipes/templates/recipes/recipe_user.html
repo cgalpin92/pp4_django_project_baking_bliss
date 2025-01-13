@@ -5,11 +5,7 @@
 <div class="container-fluid">
     <div class="row">
 
-        <!-- displays the recipes where the current logged-in user is the author 
-         If the recipe is still waiting approval then the font it greyed out and 
-         the text below states waiting approval. If the recipe is approved then the
-         font color is standard and the recipe title becomes a link to the recipe 
-         and the text below states approved -->
+        <!-- displays the recipes where the current logged-in user is the author -->
         <h2 class="cream-font font-two text-center mb-5">My Recipes</h2>
         <div class="col-12 left">
             <div class="row">
@@ -46,7 +42,7 @@
                                         class="btn font-two lilac-font edit-btn">Edit Recipe</a></h4>
 
                                 <button class="btn btn-delete-recipe font-two lilac-font ms-2 delete-btn"
-                                    recipe_id="{{ recipe.id }}">Delete</button>
+                                    data-recipe_id="{{ recipe.id }}">Delete</button>
                             </div>
                         </div>
                     </div>
@@ -66,8 +62,7 @@
     </div>
 </div>
 
-<!-- Delete confirmation modal for when user deletes a recipe
-to check that the user would like to delete the recipe -->
+<!-- Delete confirmation modal -->
 <div class="modal fade" id="deleteRecipeModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content cream-color font-two brown-color">

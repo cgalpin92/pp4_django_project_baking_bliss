@@ -5,8 +5,10 @@ STATUS = ((0, "Draft"), (1, "Published"))
 
 # Create your models here.
 
-
 class IngredientName(models.Model):
+    """
+    Stores a single recipe Ingredient Name entry related to :model:`auth.User`
+    """
     name = models.CharField(max_length=100, unique=True)
     author = models.ForeignKey(User, on_delete=models.PROTECT, related_name="ingredient_author")
     approved = models.BooleanField(default=False)
@@ -16,6 +18,9 @@ class IngredientName(models.Model):
 
 
 class Ingredient(models.Model):
+    """
+    Stores a single ingredient entry related to :model:`ingredient_name.IngredientName`
+    """
     TEASPOON = "tsp"
     TEASPOONS = "tsps"
     TABLESPOON = "tbsp"
@@ -53,6 +58,9 @@ class Ingredient(models.Model):
 
 
 class Category(models.Model):
+    """
+    Stores a single Category Name entry
+    """
     category_name = models.CharField(max_length=20, unique=True)
 
     def __str__(self):
@@ -60,6 +68,10 @@ class Category(models.Model):
 
 
 class Recipe(models.Model):
+    """
+    Stores a single recipe post entry related to :model:`auth.User`,`category.Category`
+    and :model:`ingredient.Ingredient`
+    """
     EASY = "Easy"
     MEDIUM = "Medium"
     HARD = "Hard"
@@ -86,6 +98,9 @@ class Recipe(models.Model):
 
 
 class Comment(models.Model):
+    """
+    Stores a single Comment Post entry related to :model:`auth.User` and `model: recipe.Recipe`
+    """
 
     NO_RATING = "No Rating"
     ONE_OUT_OF_FIVE = "1/5"
