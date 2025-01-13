@@ -4,6 +4,8 @@
 
 - Baking Bliss is a recipe sharing platform for baking enthusiasts to share their favourite recipes, discover new ones and connect with other fellow bakers. 
 
+![Responsive Mockup Image](/static/images/responsive_mockup.png)
+
   ### Roles of the site:
     - __The site user__ can discover new recipes without creating an account or signing into the site. However, in order to contribute to the site by sharing their own recipes or commenting on other recipes and connecting with other bakers they will need to create an account and sign in.
 
@@ -47,7 +49,9 @@
 
 ## User Experience Stories
 
- - I have used Agile Methods to plan and create this project. By using User Experience stories I have kept the end user and site owner at the forefront of design and functionality decisions. I used GitHub projects to record the user stories which were marked against the end product.
+ - I have used Agile Methods to plan and create this project. By using User Experience stories I have kept the end user and site owner at the forefront of design and functionality decisions. I used GitHub projects to record the user stories which were marked against the end product. All were complete by the end of the project.
+
+ ![user stories](/static/images/user_stories.png)
 
   __User Stories__
 
@@ -115,6 +119,8 @@
     - The About page is clearly labelled in the Nav Menu
     - The user is able to select this link and they are re-directed to a new page
     - The about page includes content about the purpose of the site and site owner
+  
+  
 
 ## Design
 
@@ -136,6 +142,13 @@
   - Outfit - This font is used for the site name only to make this stand out. The site name is also in uppercase, again to grab the users attention.
   - Comfortaa is used for the menu items, buttons and remaining headers. Its a slightly softer font to the site name but still stands out and grabs the users attention. 
   - Playfair Display is used for any text content, again differentiating it from headers and action items.
+
+  -__Wireframes__
+
+  - Wireframes were used to map out the design of the site including how features would behave responsively:
+  ![wireframe mobile](/static/images/wireframes_mobile.png)
+  ![wireframe ipad](/static/images/wireframes_ipad.png)
+  ![wireframe desktop](/static/images/wireframes_desktop.png)
 
 ## Features
 
@@ -394,7 +407,7 @@
         - No p element in scope but a p end tag seen.
     
     - All other HTML tests passed the validator
-    
+
 -__CSS__
 
   - No errors were found when passing through the official (Jigsaw) validator
@@ -453,8 +466,8 @@
     - Error - No p element in scope but a p end tag seen - due to the p element filtering through from Summernote editor on the admin site - fixed through changing the p element to a article element.
 
     - Error - Attribute recipe_id not allowed on element button at this point - resolved this by adding data tags infront of recipe_id in both the HTML and the JS code.
+    - Error - Attribute comment_id not allowed on element button at this point - resolved this by adding data tags infront of both comment_id in both the HTML and the JS code.
 
-    
 
   - __Unfixed Bugs__
 
@@ -501,9 +514,8 @@ This project was deployed using Heroku.
 To project required the following steps prior to the deployment to Heroku.
   - install gunicorn ~=20.1 - the production equivalent of manage.py runserver
     - The creation of Profile with the inclusion of web:gunicorn baking_bliss.wsgi - the command heroku uses to find the correct .py file to run and start the server
-
   - add .herokuapp.com to ALLOWED_HOSTS within settings.py
-
+  - install for whitenoise to handle the static files.
 
 - __Steps for deployment:__
     - Fork or clone this repository
