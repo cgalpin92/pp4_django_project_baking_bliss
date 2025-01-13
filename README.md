@@ -46,6 +46,13 @@
 
   - About
     - This model, also taken from the I Think I Blog walkthrough project sits within the about app. Its purpose is to the allow the Site Admin to input information about Baking Bliss for the end user to read. It has no relationships to other models.
+  
+  ![Ingredients Name](/static/images/IngredientName_model.png)
+  ![Ingredient](/static/images/ingredients_model.png)
+  ![Category](/static/images/category_model.png)
+  ![Recipe](/static/images/recipe_model.png)
+  ![Comment](/static/images/comments_model.png)
+  ![About](/static/images/about_model.png)
 
 ## User Experience Stories
 
