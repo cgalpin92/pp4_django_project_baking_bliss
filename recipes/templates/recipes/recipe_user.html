@@ -42,10 +42,10 @@
                                 {% endif %}
                             </div>
                             <div class="card-footer d-flex justify-content-center">
-                                <h4><a href="{% url 'recipe_edit' recipe.slug %}" class="btn font-two lilac-font"
-                                        id="edit-btn">Edit Recipe</a></h4>
+                                <h4><a href="{% url 'recipe_edit' recipe.slug %}"
+                                        class="btn font-two lilac-font edit-btn">Edit Recipe</a></h4>
 
-                                <button class="btn btn-delete-recipe font-two lilac-font ms-2" id="delete-btn"
+                                <button class="btn btn-delete-recipe font-two lilac-font ms-2 delete-btn"
                                     recipe_id="{{ recipe.id }}">Delete</button>
                             </div>
                         </div>

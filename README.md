@@ -211,7 +211,11 @@
 
 -__Responsiveness Testing__
 
-  - Bootstrap and CSS have been used to make Baking Bliss a responsive website and to ensure that each screen can be viewed on different screensizes. It has been successfully tested on a variety of devices such as iPhone, iPad, Laptop and Desktop. 
+  - Bootstrap and CSS have been used to make Baking Bliss a responsive website and to ensure that each screen can be viewed on different screensizes. Through the use of DevTools It has been successfully tested on a variety of devices;
+    - Mobile < = 768px
+    - Tablet > = 768px
+    - Laptop > = 992px
+    - Desktop > = 1200px
 
   - The website utilizes the Bootstrap Grid layout and Card component. The cards are used to display the Recipes, Categories, Comments and Comments form which are set to display vertically on smaller screens. As the screen gets larger the cards begin to display horizontally. The navigation button which takes the user back to either the Home screen or to view All Recipes is located under the page title on smaller screens and on larger screens to the right of the page in-line with the page title.
 
@@ -219,29 +223,148 @@
 
   - The Summernote Form Fields within the Recipe Upload and Recipe Edit screens are styled through settings.py so that respond to the screen size.
 
-
-
 -__Browser Compatibility Testing__
 
- 
+  - Baking Bliss has been successfully tested across a range of different browsers; Chrome, Edge, Firefox and Safari (on a mobile device). Within each browser I was able to register an account, log in, upload a recipe, view that recipe, edit that recipe and delete that recipe. All navigation items and buttons responded correctly.
 
 -__Lighthouse Testing__
+
+  - I can confirm that the colors and fonts chosen for each page are easy to read and accessible by running it through lighthouse in Chrome DevTools.
+
 
 -__User Stories Testing__
 
 -__Features Testing__
 
+  - I have tested that the navigation bar is responsive in both mobile and desktop view.
 
+  - I have tested that a user can register, sign in and sign out successfully with a message confirming this.
+
+  - I have successfully uploaded a new recipe to Baking Bliss, it has appeared in all the correct locations in a greyed out style until I have approved it in the admin.html.
+
+  - I have successfully edited and deleted a recipe from the recipe_user.html page.
+
+  - I have successfully edited and deleted a comment from the recipe_details page.
 
 
 ### Validator Testing
+
+-__HTML__
+
+  - When passing the code through the official W3C validator the following errors occured due to either Bootstrap or Summernote styling:
+
+    - base.html 
+      - Error - The aria-controls attribute must point to an element in the same document.
+      - This error was not resolved due to the element it is referring to is a bootstrap imported element for the navbar menu toggle on smaller screens.
+      - Due to every page extending from base.html, this error re-occured for each page test.
+    
+    - about.html
+      - Error - No p element in scope but a p end tag seen.
+      - This error was not resolved due to the p element filtering through from Summernote editor on the admin site. I navigated to this content in Admin and checked that no remaining spaces were at the end of the content incase this resolved the issue, however it did not.
+    
+    recipe_detail.html
+      - Warning - Element name o:p cannot be represented as XML 1.0
+      - I believe this is a result of using Summernote to style the recipe method.
+
+      - Error - Element o:p not allowed as a child of element p in this context
+      - Again I believe this is a result of using Summernote to style the recipe method.
+
+      - Error - No p element in the scope but a p end tag seen.
+      - Again believe this is due to summernote customisation in the admin.
+
+      - Error - Attribute comment_id not allowed on element button at this point.
+      - This I believe relates to the javascript code for editing and deleting the comments. It allows for the specific comment to be identified. This was taken from the Walkthrough project.
+
+      - Error - End tag main seen, but there were open elements.
+      - can confirm that the structure is correct, this was due to taking the code to input into validator from the site's source code to avoid the use of DTL throwing errors.
+
+      - Error - Unclosed element div
+      - can confirm that the structure is correct, this was due to taking the code to input into validator from the site's source code to avoid the use of DTL throwing errors.
+    
+    recipe_user.html
+      - Error - Attribute recipe_id not allowed on element button at this point.
+      - Same error as in recipe_detail for comment_id - believe relates to the javascript code for editing and deleting the comments. It allows for the specific comment to be identified. The syntax for relating the javascript code to the element was taken from the Walkthrough project.
+    
+    recipe_edit.html
+      - The following errors were due to Summnote styling within the recipe_upload form:
+        - Bad value true for attribute hidden on element textarea.
+        - Element style not allowed as child of element div in this context. (Suppressing further errors from this subtree.)
+        - Duplicate attribute class.
+        - Attribute cols not allowed on element div at this point.
+        - Attribute rows not allowed on element div at this point.
+        - Attribute width not allowed on element div at this point.
+        - Attribute height not allowed on element div at this point.
+        - Bad value 100% for attribute width on element iframe: Expected a digit but saw % instead.
+        - The frameborder attribute on the iframe element is obsolete. Use CSS instead.
+    
+    logout.html, login.html, signup.html
+      - Error - Attribute active not allowed on element a at this point.
+      - Django all_auth input
+    
+    signup.html
+      - Following errors are part of Django All_auth:
+        - End tag p implied, but there were open elements.
+        - Unclosed element span.
+        - Stray end tag span.
+        - No p element in scope but a p end tag seen.
+
+-__CSS__
+
+  - No errors were found when passing through the official (Jigsaw) validator
+
+-__JavaScript__
+
+  - Have run the javascript code through jshint.
+  - Warnings have appeared but no errors.
+  - The warnings have stated that the variables and syntaxes used are only available in ES6. I do not believe any action is required here as it is not affecting the running of my code 
+
+-__Python__
+
+  - I have run the code through the CI pep8 python linter and it has returned no errors.
 
 ### Bugs
 
   - __Fixed Bugs__
 
+    - Editing Recipes
+
+      - When building the function to edit a recipe recieved a TypeError code stating that the function was missing 1 required positional argument 'recipe_id'
+      - I found this was due to when building the function I was passing both the slug and the recipe id. Only one of these was required due to both being unique to the recipe.
+      - I resolved this through removing the recipe_id argument and just using the slug to identify the recipe that the user would like to edit.
+
+      - When building the function to edit a recipe the form page was loading but without any of the existing information.
+      - I had not added the if argument request = POST to the function
+      - Once this was added the form loaded with the pre-populated data to enter
+
+      - Once the pre-populated fields were loading I noticed that the HTML code was being filtered through to the text fields in the form.
+      - Through testing different recipes (ones that have been loaded through the Admin site and ones uploaded through the front end form) I found that those loaded through the admin site were displaying the HTML code when editing the recipe. This was due to summernote being used to edit the recipes in the Admin site. Found documentation on Github suggesting to import summernote fields into forms.py.
+      - Once summernote fields were imported into forms.py the HTML code was no longer showing. However the textfields were not responsive, taking up over the max-width of the page. Found further down in the documentation how to configure the width of the text fields by adding height and width configurations into settings.py. This resolved the issue.
+    
+    - Uploading recipes
+      
+      - When the recipe form was first created the ingredients fields were not updating to the database. After searching through the django documentation found that after running recipe.save()at the end of the recipe_upload view, an additional function of recipe_form.save_m2m() was required to save the many to many fields to the database
+
+    - Delete Recipes
+
+      - When building the function to delete a recipe an error of page not found
+      - This was due to an incorrect url - the terminal stated it was looking for my_recipes/delete_recipe/30 - whereas I had set the url as delete_recipe/<slug:slug>.
+      - I updated the url to 'my_recipes/recipe_delete/<int:recipe_id>/' and passed the recipe id as an argument into the function and removed the slug argument.
+      - This resulted in an additional error of clean() got an unexpected keyword argument 'styles'.
+      - Through searching online found this was a compatibility issue between Django Summernote and the Bleach library.
+      - Following the steps online [https://stackoverflow.com/questions/73789407/django-summernote-clean-got-an-unexpected-keyword-argument-styles-in-djangof] I uninstalled the latest version of Blean and re-installed Bleach 3.3.1.
+      - This resolved the issue and allowed the recipe to be deleted.
+
+    - Editing and Deleting comments:
+
+      - When following the steps to edit and delete the comments on a recipe page the buttons were not reponding to the mouse click.
+      - The delete function was due to a typo within comment.js, once this was resolved the comment would delete when requested.
+      - The comment issue was due to a missing id from the comment_body element. Once this was added the edit button would allow the user to update the comment.
+
 
   - __Unfixed Bugs__
+
+    - Summernote Fields within Admin site.
+      - Due to configuration of Summernote Text field in settings.py to fix issue of text field overspilling the page in the front end forms, the size and width of the fields have also changed withn the admin site. On a desktop they are not taking up with width of the page. However this is not affecting the functionality of the site and I have been unable to find an alternative solution at the present time.
 
 ## Deployment
 
@@ -310,15 +433,22 @@ This project was deployed using Heroku.
 
   - Some code and guidance for building the django project were taken from the I Think I Blog walkthrough project:
     - Code taken from walkthrough project:
-      - To create conditional naviation menu in the header dependent on if user is signed in
+      - To create conditional naviation menu items in the header dependent on if user is signed in (the Register, Login and Logout items).
       - To create messages in response to a user action, either login, logout, sign-up, comment on a recipe, update or delete a comment and upload a recipe.
       - To create the edit and delete buttons for editing or deleting comments on a recipe
       - For displaying comments at the bottom of a recipe and creating the comments form
       - Function based view for displaying the recipe page
-      - Comments model
+      - Model fields for the Comments model
+    - The walkthrough project provided guidance on what packages to install such as Django AllAuth, Summernote, Crispy forms and Whitenoise. 
   
   - Code for displaying the many to many field ingredients as multiple choice text boxes in form sourced from tutorial on Medium.com:
     - https://medium.com/swlh/django-forms-for-many-to-many-fields-d977dec4b024
+  
+  - Guidance on the Django framework taken from Django documentation:
+    - https://docs.djangoproject.com/en/4.2/ 
+  
+  - Guidance on the Bootstrap library, along with some responsive boostrap code taken from Bootstrap documentation:
+    - https://getbootstrap.com/docs/4.6/getting-started/introduction/
 
   - Guidance for ordering the multiple choice checkboxes in the upload form taken from Stack Overflow:
     - https://stackoverflow.com/questions/55493825/how-to-sort-drop-downs-in-alphabetical-order-in-django
@@ -326,20 +456,24 @@ This project was deployed using Heroku.
   - Guidance on django models and model fields taken from:
     - https://docs.djangoproject.com/en/4.2/ref/models/fields/#manytomanyfield
   
-  - Guidance on how to access model Ingredient for model Recipe in recipe_detail view takne from Stack Overflow:
+  - Guidance on how to access model Ingredient for model Recipe in recipe_detail view taken from Stack Overflow:
     - https://stackoverflow.com/questions/71126435/django-models-many-to-many-relationship-problem
     - https://stackoverflow.com/questions/47271339/access-many-to-many-field-within-django-template
+
+  - Guidance on how to import Summernote fields into forms and later customise them to behave responsively taken from GitHub:
+    - https://github.com/lqez/django-summernote?tab=readme-ov-file#form
+  
+  - Guidance on how to resolve a compatibility error when deleting a recipe taken from Stack Overflow:
+    - https://stackoverflow.com/questions/73789407/django-summernote-clean-got-an-unexpected-keyword-argument-styles-in-djangof
+  
   
   ### Content
   - The recipes used for testing and initial deployment were sourced from BBC Good Food:
     - https://www.bbcgoodfood.com/recipes/collection/baking-recipes?page=1
 
-
   - The color pallet for this site was taken from the bake this Happen blog:
     - https://www.bakethishappen.com/blog/5-brand-palettes-for-your-home-baking-business
   
-
-
 ### Media
 
   - The images used within this project were taken from Pexels.com:

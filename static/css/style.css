@@ -90,29 +90,6 @@ li.nav-item {
 
 
 
-/*
-li.nav-item:hover {
-    color: #701d0d;
-}
-
-
-li.a:hover {
-    color: #701d0d;
-}
-
-li.nav-item:hover {
-    color: #701d0d;
-}
-
-.dropdown-font {
-    color: #F58871;
-}
-
-.dropdown-font:hover {
-    color: #701d0d;
-}
-    /*
-
 /* Main Styles */
 
 main {
@@ -150,13 +127,13 @@ main {
     margin-top: 8%;
 }
 
-#edit-btn {
+.edit-btn {
     font-size: 50%;
     padding: 4%;
     height: 43px;
 }
 
-#delete-btn {
+.delete-btn {
     height: 43px;
 }
 
@@ -168,11 +145,6 @@ main {
     font-size: large;
 }
 
-/*
-.card-title:hover {
-    color: #701d0d;
-}
-*/
 
 .height {
     height: 41px;
@@ -181,7 +153,6 @@ main {
 #recipe {
     font-size: smaller;
 }
-
 
 #comments-card {
     font-size: smaller;
@@ -359,15 +330,10 @@ footer {
         padding-left: 21%;
     }
 
-    /*nav.navbar.navbar-expand-lg {
-        width: 100%;
-    }*/
-
     .margin-left {
         margin-left: 24%;
         margin-bottom: -15%;
     }
-
 
     .navbar-expand-lg .navbar-nav {
         font-size: 142%;
@@ -375,18 +341,9 @@ footer {
         align-items: baseline;
     }
 
-
     .navbar-margin {
         margin-left: 12%;
     }
-
-    /*.nav-item-three {
-        margin-left: 214%;
-    }*/
-
-    /*.nav-item-four {
-        margin-left: 588%;
-    }*/
 
     .btn-one-position {
         /*font-size: 120%;*/
@@ -411,14 +368,6 @@ footer {
         margin-top: -11%;
         font-size: 125%;
     }
-
-    /*#nav-item-one {
-        margin-left: 40%;
-    }
-
-    #nav-item-two {
-        margin-left: 223%;
-    }*/
 
     #ingredients {
         padding-left: 10%;
