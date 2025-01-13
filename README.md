@@ -51,20 +51,22 @@
 
   -__Color Scheme__
 
-    - There are 3 main colors used across the Baking Bliss site, with an additional 3 supporting colors. 
-      - These 3 main colors are Coral, Cream and Brown and are used primarily for background colors and main content font.
-        - The Header, Footer, Recipe Cards and forms have a cream background and these are consistent across all pages.
-        - The Header and Footer font are brown, intending to be clear stand out catching the user's attention.
-        - The menu items within the Header are in coral, again contrasting against the cream background and tying in with the rest of the color scheme.
-        - On all pages the primary background color is coral to keep consistency.
-      - The supporting 3 colors are lilac, blush and grey which are used for buttons and indicating content waiting for approval. They again stand out from the rest of the content idicating a purpose. 
+  - There are 3 main colors used across the Baking Bliss site, with an additional 3 supporting colors. 
+
+    - These 3 main colors are Coral, Cream and Brown and are used primarily for background colors and main content font.
+      - The Header, Footer, Recipe Cards and forms have a cream background and these are consistent across all pages.
+      - The Header and Footer font are brown, intending to be clear stand out catching the user's attention.
+      - The menu items within the Header are in coral, again contrasting against the cream background and tying in with the rest of the color scheme.
+      - On all pages the primary background color is coral to keep consistency.
+      
+    - The supporting 3 colors are lilac, blush and grey which are used for buttons and indicating content waiting for approval. They again stand out from the rest of the content idicating a purpose. 
 
   -__Typography__
 
-    - The fonts Outfit, Comfortaa and Playfair Display are used across the Baking Bliss site. 
-    - Outfit - This font is used for the site name only to make this stand out. The site name is also in uppercase, again to grab the users attention.
-    - Comfortaa is used for the menu items, buttons and remaining headers. Its a slightly softer font to the site name but still stands out and grabs the users attention. 
-    - Playfair Display is used for any text content, again differentiating it from headers and action items.
+  - The fonts Outfit, Comfortaa and Playfair Display are used across the Baking Bliss site. 
+  - Outfit - This font is used for the site name only to make this stand out. The site name is also in uppercase, again to grab the users attention.
+  - Comfortaa is used for the menu items, buttons and remaining headers. Its a slightly softer font to the site name but still stands out and grabs the users attention. 
+  - Playfair Display is used for any text content, again differentiating it from headers and action items.
 
 
 ## Features
@@ -209,7 +211,25 @@
 
 -__Responsiveness Testing__
 
+  - Bootstrap and CSS have been used to make Baking Bliss a responsive website and to ensure that each screen can be viewed on different screensizes. It has been successfully tested on a variety of devices such as iPhone, iPad, Laptop and Desktop. 
+
+  - The website utilizes the Bootstrap Grid layout and Card component. The cards are used to display the Recipes, Categories, Comments and Comments form which are set to display vertically on smaller screens. As the screen gets larger the cards begin to display horizontally. The navigation button which takes the user back to either the Home screen or to view All Recipes is located under the page title on smaller screens and on larger screens to the right of the page in-line with the page title.
+
+  - Within the Header the Navigation menu has used Bootstrap stying to appear as a burger icon on smaller screens, which expands when selected. On laptop screens (992px) and larger the menu displays horizontally beneath the Site Name.
+
+  - The Summernote Form Fields within the Recipe Upload and Recipe Edit screens are styled through settings.py so that respond to the screen size.
+
+
+
 -__Browser Compatibility Testing__
+
+ 
+
+-__Lighthouse Testing__
+
+-__User Stories Testing__
+
+-__Features Testing__
 
 
 

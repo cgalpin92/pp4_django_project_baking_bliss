@@ -1,19 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Outfit:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
+/* Generic Syles */
+
 body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-footer {
-    margin-top: auto;
+a {
+    text-decoration: none;
+    color: #F58871;
 }
 
-h1 {
-    font-size: 180%;
-    font-weight: 5;
-    margin-right: 12%;
+a:hover {
+    color: #701d0d;
 }
 
 .font-one {
@@ -24,8 +25,8 @@ h1 {
     font-family: 'Comfortaa', sans-serif;
 }
 
-.main-color {
-    background-color: #F58871;
+.font-three {
+    font-family: 'Playfair Display', sans-serif;
 }
 
 .cream-color {
@@ -36,10 +37,453 @@ h1 {
     color: #7B573E;
 }
 
+.grey-font {
+    color: #D3D3D3;
+}
+
 .blush-color {
     color: #FFD3C5;
 }
 
+.blush-background {
+    background-color: #FFD3C5
+}
+
 .cream-font {
     color: #FCEFE6;
+}
+
+.lilac-font {
+    color: #6B80F3;
+}
+
+.coral-color {
+    color: #F58871;
+}
+
+.faded {
+    color: rgb(172, 175, 175);
+}
+
+/* Header Styles */
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+h1 {
+    font-size: 230%;
+    font-weight: 5;
+    margin-left: -23%;
+    padding: 6%
+}
+
+.margin-left {
+    margin-left: -17%;
+}
+
+
+li.nav-item {
+    margin-top: 10%;
+}
+
+
+
+/*
+li.nav-item:hover {
+    color: #701d0d;
+}
+
+
+li.a:hover {
+    color: #701d0d;
+}
+
+li.nav-item:hover {
+    color: #701d0d;
+}
+
+.dropdown-font {
+    color: #F58871;
+}
+
+.dropdown-font:hover {
+    color: #701d0d;
+}
+    /*
+
+/* Main Styles */
+
+main {
+    margin: 5%;
+}
+
+.main-color {
+    background-color: #F58871;
+}
+
+.smaller-text {
+    font-size: smaller;
+    font-weight: 200;
+}
+
+.btn {
+    background-color: #FFD3C5;
+    font-weight: 600;
+    font-size: 73%;
+}
+
+.btn-one-position {
+    margin-left: 37%;
+    margin-top: -7%;
+    padding: 1%;
+    font-size: 62%;
+}
+
+.btn:hover {
+    color: #701d0d;
+}
+
+.btn-close {
+    margin-right: 44%;
+    margin-top: 8%;
+}
+
+#edit-btn {
+    font-size: 50%;
+    padding: 4%;
+    height: 43px;
+}
+
+#delete-btn {
+    height: 43px;
+}
+
+.recipe-card {
+    height: 180px;
+}
+
+.card-title {
+    font-size: large;
+}
+
+/*
+.card-title:hover {
+    color: #701d0d;
+}
+*/
+
+.height {
+    height: 41px;
+}
+
+#recipe {
+    font-size: smaller;
+}
+
+
+#comments-card {
+    font-size: smaller;
+}
+
+#comments {
+    padding: 3%;
+}
+
+#message-alignment {
+    margin-top: -7%;
+    text-align: center;
+    font-size: smaller;
+}
+
+
+/* form styles */
+
+ul {
+    list-style-type: none;
+}
+
+
+#comment-form {
+    padding-top: 7%;
+}
+
+#comment-form-title {
+    padding: 3%;
+}
+
+/* about app */
+
+#about-card {
+    margin-top: -10%;
+}
+
+
+#about-img {
+    padding: 14%;
+}
+
+
+#about-content {
+    margin-top: -17%;
+    padding: 7%;
+}
+
+/* footer styles */
+
+footer {
+    margin-top: auto;
+}
+
+/* responsive styling for screens 374px and below */
+@media screen and (max-width: 374px) {
+
+    h1 {
+        font-size: 200%;
+        margin-left: -18%;
+    }
+
+    button.navbar-toggler {
+        padding: 11%;
+        margin-top: 9%;
+    }
+
+    .btn-one-position {
+        margin-top: -10%;
+        margin-left: 34%;
+    }
+
+    .font-size {
+        font-size: small;
+    }
+
+    .height {
+        height: 34px;
+    }
+
+    #message-alignment {
+        font-size: 60%;
+    }
+}
+
+/* responsive styling for screens 768px and above */
+@media screen and (min-width: 768px) {
+    h1 {
+        font-size: 400%;
+        margin-left: -44%;
+        padding: 3%;
+    }
+
+    nav {
+        margin-left: 6%;
+    }
+
+    nav.navbar.navbar-expand-lg {
+        margin: 5%;
+    }
+
+
+    li.nav-item {
+        margin-top: 25%;
+    }
+
+    .btn-one-position {
+        margin-left: 86%;
+        margin-top: -12%;
+        /*font size: 85%;*/
+    }
+
+    .btn-close {
+        margin-right: 48%;
+        margin-top: 5%;
+    }
+
+    .recipe-card {
+        height: 230px;
+    }
+
+    .category-card {
+        height: 230px;
+    }
+
+    .margins {
+        margin-top: 4%;
+        margin-left: 10%;
+    }
+
+    .padding {
+        padding-top: 3%;
+        padding-bottom: 3%;
+        padding-left: 42%;
+    }
+
+    .font-size {
+        font-size: large;
+    }
+
+
+    #username-font {
+        font-size: 140%;
+    }
+
+    #method {
+        background-color: #FFD3C5;
+    }
+
+    #comments-card {
+        font-size: 100%;
+    }
+
+    #message-alignment {
+        font-size: 100%;
+    }
+
+    #recipe {
+        font-size: 100%;
+    }
+}
+
+/* responsive styling for screens 992px and above */
+@media screen and (min-width: 992px) {
+
+    header {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        margin-bottom: 4%;
+    }
+
+    h1 {
+        font-size: 500%;
+        padding-left: 21%;
+    }
+
+    /*nav.navbar.navbar-expand-lg {
+        width: 100%;
+    }*/
+
+    .margin-left {
+        margin-left: 24%;
+        margin-bottom: -15%;
+    }
+
+
+    .navbar-expand-lg .navbar-nav {
+        font-size: 142%;
+        margin-left: -10%;
+        align-items: baseline;
+    }
+
+
+    .navbar-margin {
+        margin-left: 12%;
+    }
+
+    /*.nav-item-three {
+        margin-left: 214%;
+    }*/
+
+    /*.nav-item-four {
+        margin-left: 588%;
+    }*/
+
+    .btn-one-position {
+        /*font-size: 120%;*/
+        margin-left: 85%;
+    }
+
+    .margins {
+        margin-top: 5%;
+        margin-left: 7%;
+    }
+
+    .padding {
+        padding-left: 40%;
+        padding-bottom: 4%;
+    }
+
+    #comment-form {
+        padding-top: 0%;
+    }
+
+    #message-alignment {
+        margin-top: -11%;
+        font-size: 125%;
+    }
+
+    /*#nav-item-one {
+        margin-left: 40%;
+    }
+
+    #nav-item-two {
+        margin-left: 223%;
+    }*/
+
+    #ingredients {
+        padding-left: 10%;
+    }
+
+    #equipment {
+        padding-left: 5%;
+    }
+
+    #method {
+        margin: 7%;
+    }
+
+    #username-font {
+        font-size: 170%;
+    }
+}
+
+/* responsive styling for screens 1200px and above */
+@media screen and (min-width: 1200px) {
+
+    /*.navbar-expand-lg .navbar-nav {
+        font-size: 162%;
+    }*/
+
+    .margin-left {
+        margin-left: 19%;
+        margin-bottom: -12%;
+    }
+
+    .btn-one-position {
+        margin-left: 90%;
+    }
+
+    .category-card {
+        height: 290px;
+    }
+
+    .card-title {
+        font-size: larger;
+    }
+
+    #username-font {
+        font-size: 190%;
+        margin-top: -4%;
+        padding-bottom: 4%;
+    }
+
+    #message-alignment {
+        font-size: 170%;
+    }
+}
+
+/* responsive styling for screens 1400px and above */
+@media screen and (min-width: 1400px) {
+
+    .category-card {
+        height: 330px;
+    }
+}
+
+/* responsive styling for screens 1600px and above */
+@media screen and (min-width: 1600px) {
+
+    .margin-left {
+        margin-left: 14%;
+    }
 }

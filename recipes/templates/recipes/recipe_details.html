@@ -17,9 +17,9 @@
                     <div class="col-sm-12 col-md-6 mb-3" id="ingredients">
                         <h3 class="lilac-font">Ingredients:</h3>
                         {% for ingredient in recipe.ingredients.all %}
-                        <li class="brown-color">{{ ingredient.measurement }}{{ ingredient.unit }}
+                        <p class="brown-color">{{ ingredient.measurement }}{{ ingredient.unit }}
                             {{ ingredient.ingredient_name }}
-                        </li>
+                        </p>
                         {% endfor %}
                     </div>
                     <div class="col" id="equipment">
@@ -42,118 +42,118 @@
             </div>
         </div>
     </div>
+</div>
 
+<!-- Comments Section -->
+<div class="container-fluid">
+    <div class="row mt-4">
 
-    <!-- Comments Section -->
-    <div class="container-fluid">
-        <div class="row mt-4">
-
-            <!-- Displaying all comments -->
-            <!-- if a comment is awaiting approval then it will be greyed out and 
-              only visible if the author of the comment is logged in -->
-            <div class="col-lg-6">
-                <div class="card cream-color font-two" id="comments-card">
-                    <div class="card-title">
-                        <h4 class="lilac-font" id="comments">Comments:</h4>
-                    </div>
-                    {% for comment in comments %}
-                    {% if not comment.approved and comment.author == user %}
-                    <div class="card-body grey-font">
-                        <h5>{{ comment.comment_title }}</h5>
-                        <p id="comment{{ comment.id }}">{{ comment.body }}</p>
-                        <p>author: {{ comment.author }}</p>
-                        {% if comment.rating == "1/5" %}
-                        <p>rating: <i class="fa-solid fa-star"></i></p>
-                        {% elif comment.rating == "2/5" %}
-                        <p>rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-                        {% elif comment.rating == "3/5" %}
-                        <p>rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i></p>
-                        {% elif comment.rating == "4/5" %}
-                        <p>rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-                        {% elif comment.rating == "5/5" %}
-                        <p>rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i></p>
-                        {% endif %}
-                        <p>Awaiting approval</p>
-                        {% if user.is_authenticated and comment.author == user %}
-                        <button class="btn btn-delete lilac-font" comment_id="{{ comment.id }}">Delete</button>
-                        <button class="btn btn-edit lilac-font" comment_id="{{ comment.id }}">Edit</button>
-                        {% endif %}
-                    </div>
-                    {% elif not comment.approved %}
-                    <div class="d-none"></div>
-                    {% else %}
-                    <div class="card-body brown-color">
-                        <h5>{{ comment.comment_title }}</h5>
-                        <p id="comment{{ comment.id }}">{{ comment.body }}</p>
-                        <p>author: {{ comment.author }}</p>
-                        {% if comment.rating == "1/5" %}
-                        <p>rating: <i class="fa-solid fa-star"></i></p>
-                        {% elif comment.rating == "2/5" %}
-                        <p>rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-                        {% elif comment.rating == "3/5" %}
-                        <p>rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i></p>
-                        {% elif comment.rating == "4/5" %}
-                        <p>rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-                        {% elif comment.rating == "5/5" %}
-                        <p>rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                class="fa-solid fa-star"></i></p>
-                        {% endif %}
-                        {% if user.is_authenticated and comment.author == user %}
-                        <button class="btn btn-delete lilac-font" comment_id="{{ comment.id }}">Delete</button>
-                        <button class="btn btn-edit lilac-font" comment_id="{{ comment.id }}">Edit</button>
-                        {% endif %}
-                    </div>
-                    {% endif %}
-                    {% endfor %}
+        <!-- Displaying all comments -->
+        <!-- if a comment is awaiting approval then it will be greyed out and 
+                only visible if the author of the comment is logged in -->
+        <div class="col-lg-6">
+            <div class="card cream-color font-two" id="comments-card">
+                <div class="card-title">
+                    <h4 class="lilac-font" id="comments">Comments:</h4>
                 </div>
-            </div>
-
-            <!-- Leave a Comment Form -->
-            <!-- can only leave a form if the user is logged in -->
-            <div class="col" id="comment-form">
-                {% if user.is_authenticated %}
-                <div class="card cream-color font-two">
-                    <div class="card-title">
-                        <h4 class="lilac-font" id="comment-form-title">Leave a comment about this recipe:</h4>
-                    </div>
-                    <div class="card-body brown-color">
-                        <p>Comment by: {{ user.username }}</p>
-                        <form id="commentForm" method="post">
-                            {{ comment_form | crispy }}
-                            {% csrf_token %}
-                            <button class="btn font-two lilac-font" id="submitButton" type="submit">Submit</button>
-                        </form>
-                        {% else %}
-                        <p>You need to be signed in leave a comment about a recipe</p>
-                    </div>
+                {% for comment in comments %}
+                {% if not comment.approved and comment.author == user %}
+                <div class="card-body grey-font">
+                    <h5>{{ comment.comment_title }}</h5>
+                    <p id="comment{{ comment.id }}">{{ comment.body }}</p>
+                    <p>author: {{ comment.author }}</p>
+                    {% if comment.rating == "1/5" %}
+                    <p>rating: <i class="fa-solid fa-star"></i></p>
+                    {% elif comment.rating == "2/5" %}
+                    <p>rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+                    {% elif comment.rating == "3/5" %}
+                    <p>rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></p>
+                    {% elif comment.rating == "4/5" %}
+                    <p>rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+                    {% elif comment.rating == "5/5" %}
+                    <p>rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></p>
+                    {% endif %}
+                    <p>Awaiting approval</p>
+                    {% if user.is_authenticated and comment.author == user %}
+                    <button class="btn btn-delete lilac-font" comment_id="{{ comment.id }}">Delete</button>
+                    <button class="btn btn-edit lilac-font" comment_id="{{ comment.id }}">Edit</button>
+                    {% endif %}
+                </div>
+                {% elif not comment.approved %}
+                <div class="d-none"></div>
+                {% else %}
+                <div class="card-body brown-color">
+                    <h5>{{ comment.comment_title }}</h5>
+                    <p id="comment{{ comment.id }}">{{ comment.body }}</p>
+                    <p>author: {{ comment.author }}</p>
+                    {% if comment.rating == "1/5" %}
+                    <p>rating: <i class="fa-solid fa-star"></i></p>
+                    {% elif comment.rating == "2/5" %}
+                    <p>rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+                    {% elif comment.rating == "3/5" %}
+                    <p>rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></p>
+                    {% elif comment.rating == "4/5" %}
+                    <p>rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+                    {% elif comment.rating == "5/5" %}
+                    <p>rating: <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></p>
+                    {% endif %}
+                    {% if user.is_authenticated and comment.author == user %}
+                    <button class="btn btn-delete lilac-font" comment_id="{{ comment.id }}">Delete</button>
+                    <button class="btn btn-edit lilac-font" comment_id="{{ comment.id }}">Edit</button>
+                    {% endif %}
                 </div>
                 {% endif %}
+                {% endfor %}
             </div>
         </div>
-    </div>
-    <!-- Buttons to either return to previous page or view all recipes -->
-    <div class="row">
-        <div class="col d-flex justify-content-end p-2">
-            <button onclick="window.history.back();" type="button"
-                class="btn font-two lilac-font font-size height">Back</button>
+
+        <!-- Leave a Comment Form -->
+        <!-- can only leave a form if the user is logged in -->
+        <div class="col" id="comment-form">
+            {% if user.is_authenticated %}
+            <div class="card cream-color font-two">
+                <div class="card-title">
+                    <h4 class="lilac-font" id="comment-form-title">Leave a comment about this recipe:</h4>
+                </div>
+                <div class="card-body brown-color">
+                    <p>Comment by: {{ user.username }}</p>
+                    <form id="commentForm" method="post">
+                        {{ comment_form | crispy }}
+                        {% csrf_token %}
+                        <button class="btn font-two lilac-font" id="submitButton" type="submit">Submit</button>
+                    </form>
+                    {% else %}
+                    <p>You need to be signed in leave a comment about a recipe</p>
+                </div>
+            </div>
+            {% endif %}
         </div>
-        <div class="col d-flex justify-content-start p-2">
-            <h4><a href="{% url 'recipes' %}" class="btn font-two lilac-font font-size height">All
-                    Recipes</a></h4>
-        </div>
     </div>
+</div>
+<!-- Buttons to either return to previous page or view all recipes -->
+<div class="row">
+    <div class="col d-flex justify-content-end p-2">
+        <button onclick="window.history.back();" type="button"
+            class="btn font-two lilac-font font-size height">Back</button>
+    </div>
+    <div class="col d-flex justify-content-start p-2">
+        <h4><a href="{% url 'recipes' %}" class="btn font-two lilac-font font-size height">All
+                Recipes</a></h4>
+    </div>
+</div>
 </div>
 
 
 <!-- Delete confirmation modal for when user deletes a comment
-to check that the user would like to delete the comment -->
+    to check that the user would like to delete the comment -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content cream-color font-two brown-color">
