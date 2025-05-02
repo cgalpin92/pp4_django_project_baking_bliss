@@ -475,6 +475,11 @@
     - Error - Attribute recipe_id not allowed on element button at this point - resolved this by adding data tags infront of recipe_id in both the HTML and the JS code.
     - Error - Attribute comment_id not allowed on element button at this point - resolved this by adding data tags infront of both comment_id in both the HTML and the JS code.
 
+  - Exposed Secret Key:
+
+    - Secret key had been left exposed when site had been deployed to Heroku.
+    - Generated two new secret keys, one was added into the env.py file and current secret key removed from settings.py and replaced with os.environ.get('SECRET_KEY'). Second generatad secret key was added to the envionment variables in Heroku.
+    - Secret key is no longer exposed.
 
   - __Unfixed Bugs__
 
